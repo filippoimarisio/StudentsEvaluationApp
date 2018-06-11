@@ -2,14 +2,14 @@ import { Entity, Column, PrimaryColumn } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 
 @Entity()
-export default class Class extends BaseEntity {
+export default class Batch extends BaseEntity {
 
   @PrimaryColumn()
   id?: number
 
-  @Column('text', {nullable:true})
-  startDate: string
+  @Column('date', {nullable:true})
+  startDate: Date
 
-  @Column('text', {nullable:true})
-  endDate: string
+  @Column('date', {nullable:true})
+  endDate: Date
 }
