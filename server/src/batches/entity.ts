@@ -1,10 +1,11 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm'
+import { Entity, Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
+import Student from '../students/entity'
 
 @Entity()
 export default class Batch extends BaseEntity {
 
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id?: number
 
   @Column('date', {nullable:true})
@@ -12,4 +13,9 @@ export default class Batch extends BaseEntity {
 
   @Column('date', {nullable:true})
   endDate: Date
+
+  @OneToMany(_=> Student, student => student.batch)
+  students: Student[];
 }
+
+
