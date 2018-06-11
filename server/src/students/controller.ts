@@ -19,13 +19,14 @@ export default class StudentController {
         return Student.findOne(id)
     }
 
-    // @Get('/students/batch/:id')
-    // async getStudentsByBatchId(
-    //     @Param('batch') batch: number
-    // ) {
-    //     const studentsByBatch =  await Student.findOne(batch)
-    //     return {studentsByBatch}
-    // }
+    @Get('/students/batch/:batch')
+    async getStudentsByBatch(
+        @Param('batch') batch: number 
+    ) {
+        const studentsByBatch =  await Student.find({ where : {batch} })
+        return {studentsByBatch}
+    }
+
 
     @Post('/students')
     @HttpCode(201)
