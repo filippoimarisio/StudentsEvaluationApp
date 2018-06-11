@@ -1,11 +1,14 @@
 import 'reflect-metadata'
 import {createKoaServer} from "routing-controllers"
-import BatchController from "./batches/controller"
 import setupDb from './db'
+import BatchController from "./batches/controller"
+import StudentController from "./students/controller"
+
 
 const app = createKoaServer({
    controllers: [
-     BatchController
+     BatchController,
+     StudentController
    ]
 })
 
