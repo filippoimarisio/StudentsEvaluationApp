@@ -3,12 +3,15 @@ import {createKoaServer} from "routing-controllers"
 import setupDb from './db'
 import BatchController from "./batches/controller"
 import StudentController from "./students/controller"
+import EvaluationController from "./evaluations/controller"
+
 
 
 const app = createKoaServer({
    controllers: [
      BatchController,
-     StudentController
+     StudentController,
+     EvaluationController
    ]
 })
 
