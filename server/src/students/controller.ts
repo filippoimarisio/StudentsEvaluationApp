@@ -1,5 +1,6 @@
 import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError} from 'routing-controllers'
 import Student from './entity'
+import Batch from '../batches/entity'
 
 
 @JsonController()
@@ -28,9 +29,12 @@ export default class StudentController {
 
     @Post('/students')
     @HttpCode(201)
-    createStudent(
+    async createStudent(
         @Body() student : Student
     ) {
+        const batch = (await Batch.findOne(student.batch))!
+        student.batch = batch
+
         return student.save()
     }
 
