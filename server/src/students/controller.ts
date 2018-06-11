@@ -12,11 +12,19 @@ export default class StudentController {
     }  
 
     @Get('/students/:id')
-    getBatch(
+    getStudent(
         @Param('id') id: number
     ) {
         return Student.findOne(id)
     }
+
+    // @Get('/students/batch/:id')
+    // async getStudentsByBatchId(
+    //     @Param('batch') batch: number
+    // ) {
+    //     const studentsByBatch =  await Student.findOne(batch)
+    //     return {studentsByBatch}
+    // }
 
     @Post('/students')
     @HttpCode(201)
@@ -35,5 +43,5 @@ export default class StudentController {
         if (!student) throw new NotFoundError('Cannot find page')
 
         return Student.merge(student, update).save()
-}
+    }
 }
