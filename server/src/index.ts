@@ -4,14 +4,17 @@ import setupDb from './db'
 import BatchController from "./batches/controller"
 import StudentController from "./students/controller"
 import EvaluationController from "./evaluations/controller"
-
+import TeacherController from "./teachers/controller"
+import LoginController from './logins/controller';
 
 
 const app = createKoaServer({
    controllers: [
      BatchController,
      StudentController,
-     EvaluationController
+     EvaluationController,
+     TeacherController,
+     LoginController
    ]
 })
 

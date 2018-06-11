@@ -5,6 +5,8 @@ import { snakeCase } from 'typeorm/util/StringUtils'
 import Batch from './batches/entity'
 import Student from './students/entity'
 import Evaluation from './evaluations/entity'
+import Teacher from './teachers/entity'
+
 
 
 class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrategyInterface {
@@ -33,7 +35,8 @@ export default () =>
       entities: [
           Batch,
           Student,
-          Evaluation
+          Evaluation,
+          Teacher
       ],
       synchronize: true,
       logging: true,
