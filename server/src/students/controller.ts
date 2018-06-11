@@ -1,4 +1,4 @@
-import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError} from 'routing-controllers'
+import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError, Delete} from 'routing-controllers'
 import Student from './entity'
 import Batch from '../batches/entity'
 
@@ -48,5 +48,17 @@ export default class StudentController {
         if (!student) throw new NotFoundError('Cannot find page')
 
         return Student.merge(student, update).save()
+    }
+
+    @Delete('/students/:id')
+    async deleteStudent(
+        @Param('id') id: number
+    ) {
+      const student = await Student.findOne(id)
+  
+      if (!student) throw new NotFoundError('This student is not registered!')
+      if (student) student.remove()
+      
+      return 'Student Deleted.'
     }
 }
