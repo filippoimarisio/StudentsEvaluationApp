@@ -4,6 +4,8 @@ import './App.css';
 
 import BatchesListContainer from './containers/batches/BatchesListContainer'
 import StudentsListContainer from './containers/students/StudentsListContainer'
+import SignUpComponent from './containers/signup/SignUp'
+import LoginComponent from './containers/signup/LogIn'
 
 
 
@@ -18,7 +20,9 @@ class App extends Component {
 
           <Route exact path="/batches" component={BatchesListContainer} />
           <Route exact path="/batches/:id" component={StudentsListContainer} />
-      </div>
+          <Route exact path="/login" component={LoginComponent} />
+          <Route exact path="/signup" component={SignUpComponent} />
+        </div>
       </Router>
     );
   }
