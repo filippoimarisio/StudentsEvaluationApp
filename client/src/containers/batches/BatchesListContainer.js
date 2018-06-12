@@ -25,7 +25,7 @@ class BatchesListContainer extends React.PureComponent {
     <ul>
       { batches.map(batch =>
         <li key={batch.id} onClick={() => this.selectBatch(batch.id)}>
-          <div>Batch number: { batch.id }</div>
+          <div>Batch # { batch.batchNumber }</div>
           <div>Start date: { batch.startDate }</div>
           <div>End date: { batch.endDate }</div>
         </li>
