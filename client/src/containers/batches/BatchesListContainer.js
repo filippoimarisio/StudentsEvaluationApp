@@ -1,9 +1,26 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+
 import {fetchAllBatches, selectBatch, createBatch} from '../../actions/actions.batches'
 import CreateBatchForm from './CreateBatchForm'
 
 class BatchesListContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      batchId: ''
+    };
+  console.log(this.state,'in the constructor')
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(batchId) {
+    
+    this.setState({batchId: batchId});
+    console.log(this.state,'in the handleclick')
+  }
 
   componentWillMount() {
     this.props.fetchAllBatches();
@@ -24,11 +41,11 @@ class BatchesListContainer extends React.PureComponent {
     <h1>Batches</h1>
     <ul>
       { batches.map(batch =>
-        <li key={batch.id} onClick={() => this.selectBatch(batch.id)}>
+        <Link key={batch.id} to={`/batches/${batch.id}`} onClick={() => this.handleClick(batch.id)}>
           <div>Batch # { batch.batchNumber }</div>
           <div>Start date: { batch.startDate }</div>
           <div>End date: { batch.endDate }</div>
-        </li>
+        </Link>
       )}
     </ul>
     <CreateBatchForm createBatch={this.createBatch} />
@@ -37,7 +54,6 @@ class BatchesListContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => {
-  
   return {
     batches: state.batches
   }
