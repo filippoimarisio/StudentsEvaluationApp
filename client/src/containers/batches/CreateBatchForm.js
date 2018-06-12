@@ -14,27 +14,31 @@ export default class CreateBatchForm extends React.PureComponent {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    if (this.state.name && this.state.description) {
-      this.props.addPizza({
-        name: this.state.name,
-        description: this.state.description,
-        ingredients: []
+      this.props.createBatch({
+        batchNumber: this.state.batchNumber,
+        startDate: this.state.startDate,
+        endDate: this.state.endDate,
       })
-    }
+    
   }
 
   render() {
-    return (<div>
-      <h2>Add a pizza</h2>
+    return (
+    <div>
+      <h2>Create a new Batch</h2>
 
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
-          <input type="text" name="name" onChange={this.handleChange} />
+          Batch Number:
+          <input type="text" name="batchNumber" onChange={this.handleChange} />
         </label>
         <label>
-          Description:
-          <input type="text" name="description" onChange={this.handleChange} />
+          Start Date:
+          <input type="text" name="startDate" onChange={this.handleChange} />
+        </label>
+        <label>
+          End Date:
+          <input type="text" name="endDate" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import {fetchAllBatches, selectBatch} from '../../actions/actions.batches'
+import {fetchAllBatches, selectBatch, createBatch} from '../../actions/actions.batches'
+import CreateBatchForm from './CreateBatchForm'
 
 class BatchesListContainer extends React.PureComponent {
 
@@ -9,9 +10,13 @@ class BatchesListContainer extends React.PureComponent {
   }
 
   selectBatch(batchId) {
-    console.log(batchId, 'inside the function')
     this.props.selectBatch(batchId);
   }
+
+  createBatch = batch => {
+    this.props.createBatch(batch);
+  };
+
 
   render() {
     const { batches } = this.props
@@ -26,6 +31,7 @@ class BatchesListContainer extends React.PureComponent {
         </li>
       )}
     </ul>
+    <CreateBatchForm createBatch={this.createBatch} />
   </div>
   }
 }
@@ -37,4 +43,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchAllBatches, selectBatch})(BatchesListContainer)
+export default connect(mapStateToProps, {fetchAllBatches, selectBatch, createBatch})(BatchesListContainer)
