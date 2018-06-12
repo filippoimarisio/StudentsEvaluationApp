@@ -8,6 +8,9 @@ export default class Batch extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number
 
+  @Column('integer', {nullable:true})
+  batchNumber: number
+
   @Column('date', {nullable:true})
   startDate: Date
 
