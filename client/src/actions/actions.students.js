@@ -3,7 +3,7 @@ export const FETCH_BATCH_STUDENTS = 'FETCH_BATCH_STUDENTS'
 export const ADD_A_STUDENT = 'ADD_A_STUDENT'
 export const DELETE_STUDENT = 'DELETE_STUDENT'
 export const FETCH_STUDENT = 'FETCH_STUDENT'
-
+export const ADD_EVALUATION = 'ADD_EVALUATION'
 
 
 const baseUrl = "http://localhost:4000";
@@ -15,7 +15,7 @@ const baseUrl = "http://localhost:4000";
     .then(response => dispatch({
       type: FETCH_BATCH_STUDENTS,
       payload: response.body
-    }))
+    })) 
     .catch(err => alert(err))
     }
 
@@ -52,3 +52,16 @@ export const fetchStudent = (studentId) => (dispatch) => {
   }))
   .catch(err => alert(err))
   }
+
+  export const addEvaluation = (evaluation) => (dispatch) => {
+    console.log('in the addevaluation action creator',evaluation)
+    request
+      .put(`${baseUrl}/students/${evaluation.studentId}`)
+      .send(evaluation)
+      .then(response =>
+        dispatch({
+          type: ADD_EVALUATION,
+          payload: response.body
+        })
+      );
+    };

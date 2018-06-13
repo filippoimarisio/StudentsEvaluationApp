@@ -17,7 +17,7 @@ export default class StudentController {
         @Param('id') id: number
     ) {
         return Student.findOne(id)
-    }
+    } 
 
     @Get('/students/batch/:batch')
     async getStudentsByBatch(
@@ -44,6 +44,8 @@ export default class StudentController {
     @Param('id') id: number,
         @Body() update: Partial<Student>
     ) {
+        console.log('in the put endpoint')
+
         const student = await Student.findOne(id)
         if (!student) throw new NotFoundError('Cannot find page')
 

@@ -1,0 +1,23 @@
+.greenTable {
+    background-color: green;
+    height: 30px;
+    width: 60px
+    
+}
+
+.yellowTable {
+    background-color: yellow;
+    height: 30px;
+    width: 60px
+
+}
+
+.redTable {
+    background-color: red;
+    height: 30px;
+    width: 60px
+}
+
+.batchLevelOverview {
+    align-self: center
+}

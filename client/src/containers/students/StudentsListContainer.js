@@ -7,6 +7,7 @@ import {addAStudent} from '../../actions/actions.students'
 import Button from "@material-ui/core/Button";
 import {deleteStudent} from '../../actions/actions.students'
 import {selectStudent} from '../../actions/actions.student'
+import './StudentsListContainer.css'
 
 
 class StudentsListContainer extends React.PureComponent {
@@ -21,8 +22,9 @@ class StudentsListContainer extends React.PureComponent {
     const { batchId } = this.props.batchId
 
     student = {...student, batch : batchId}
-    console.log('in the addastudent function', batchId)
     this.props.addAStudent(student);
+    console.log('in the addastudent function', batchId, student)
+
   };
 
   deleteStudent(studentId) {
@@ -46,7 +48,36 @@ class StudentsListContainer extends React.PureComponent {
 
     return <div>
     <h1>Students</h1>
+    <div className='batchLevelOverview'>
+      <table>
+        <tbody>
+          <tr>
+            {students.map(student => {
+            if (student.lastEvaluation == 'green')
+            return (
+              <td key={student.id} className='greenTable'>
+              </td>
+            )
+            if (student.lastEvaluation == 'yellow')
+            return (
+              <td key={student.id} className='yellowTable'>
+              </td>
+            )
+            if (student.lastEvaluation == 'red')
+            return (
+              <td key={student.id} className='redTable'>
+              </td>
+            )
+            })}
+          </tr>
+        </tbody>
+      </table>
+    </div>
     
+    <div>
+      
+    </div>
+
     <ul>
       { students.map(student =>
         <li key={student.id} >
@@ -54,6 +85,7 @@ class StudentsListContainer extends React.PureComponent {
             <div>First Name: { student.firstName }</div>
             <div>Last Name: { student.lastName }</div>
             <img src={ student.photo }/>
+            <div>Last Evaluation: { student.lastEvaluation }</div>
           </Link>
         <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
@@ -76,3 +108,18 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent, selectStudent})(StudentsListContainer)
+
+
+          // <table>
+          //   <tbody>
+          //     {OrderedQuizzes.map(quiz => (
+          //       <tr key={quiz.id}>
+          //         <td>{quiz.id}</td>
+          //         <td>
+          //         </td>
+          //         <td>
+          //         </td>
+          //       </tr>
+          //     ))}
+          //   </tbody>
+          // </table>
