@@ -3,6 +3,8 @@ import login from './reducer.login'
 import signup from './reducer.signup'
 import batchId from './reducer.batch'
 import students from './reducer.fetchBatchStudents'
+import student from './reducer.student'
+import fetchstudent from './reducer.studentPage'
 
 
 export default {
@@ -10,5 +12,7 @@ export default {
     batchId,
     login,
     signup,
-    students
+    students,
+    student,
+    fetchstudent
 }

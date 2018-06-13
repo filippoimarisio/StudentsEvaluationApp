@@ -6,6 +6,7 @@ import BatchesListContainer from './containers/batches/BatchesListContainer'
 import StudentsListContainer from './containers/students/StudentsListContainer'
 import SignUpPage from './containers/signup/SignUp'
 import LoginComponent from './containers/signup/LogIn'
+import StudentPage from './containers/student/StudentPage'
 
 
 
@@ -22,6 +23,8 @@ class App extends Component {
           <Route exact path="/batches/:id" component={StudentsListContainer} />
           <Route exact path="/login" component={LoginComponent} />
           <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/students/:id" component={StudentPage} />
+
         </div>
       </Router>
     );

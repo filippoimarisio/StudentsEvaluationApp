@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
   
     return {
       studentId: state.studentId,
-      student: state.student
+      student: state.fetchstudent
     }
   }
   
