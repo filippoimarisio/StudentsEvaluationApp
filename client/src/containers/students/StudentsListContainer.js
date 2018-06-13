@@ -25,6 +25,7 @@ class StudentsListContainer extends React.PureComponent {
   render() {
 
     if(!this.props.students) {
+    this.componentWillMount()
         return  <div>Loading...</div>
     } 
 
