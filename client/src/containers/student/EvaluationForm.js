@@ -14,10 +14,10 @@ export default class CreateEvaluationForm extends React.PureComponent {
   handleSubmit = (event) => {
     event.preventDefault()
 
-      this.props.createBatch({
+      this.props.addEvaluation({
         grade: this.state.grade,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
+        remark: this.state.remark,
+
       })
     
   }
@@ -39,7 +39,7 @@ export default class CreateEvaluationForm extends React.PureComponent {
         </div>
         <label>
           Remark:
-          <input type="text" name="endDate" onChange={this.handleChange} />
+          <input type="text" name="remark" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

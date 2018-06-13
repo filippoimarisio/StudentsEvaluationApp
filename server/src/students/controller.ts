@@ -17,7 +17,7 @@ export default class StudentController {
         @Param('id') id: number
     ) {
         return Student.findOne(id)
-    }
+    } 
 
     @Get('/students/batch/:batch')
     async getStudentsByBatch(

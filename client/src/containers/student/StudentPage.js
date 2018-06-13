@@ -2,6 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import {fetchStudent} from '../../actions/actions.students'
 import CreateEvaluationForm from './EvaluationForm'
+import {addEvaluation} from '../../actions/actions.students'
 
 
 class StudentPage extends React.PureComponent {
@@ -10,6 +11,17 @@ class StudentPage extends React.PureComponent {
         console.log('in the componentwillmount studentpage', this.props.studentId)
         this.props.fetchStudent(this.props.studentId);
     }
+
+    addEvaluation = (evaluation) => {
+        console.log('in the addevaluation function', evaluation)
+        const studentId = this.props.studentId
+        console.log('in the addevaluation function', this.props.studentId)
+        // student = {...student, lastEvaluation : evaluation.grade}
+        const lastEvaluation = evaluation.grade
+        this.props.addEvaluation({studentId, lastEvaluation});
+        console.log('in the addevaluation function', {studentId, lastEvaluation})
+
+      };
 
 
     render() {
@@ -26,7 +38,7 @@ class StudentPage extends React.PureComponent {
                 <div>{student.firstName}</div>
                 <div>{student.lastName}</div>
                 <img src={`${student.photo}`}/>
-                <CreateEvaluationForm/>         
+                <CreateEvaluationForm addEvaluation={this.addEvaluation}/>         
             </div>
         )
     }
@@ -40,6 +52,6 @@ const mapStateToProps = (state) => {
     }
   }
   
-export default connect(mapStateToProps, {fetchStudent})(StudentPage)
+export default connect(mapStateToProps, {fetchStudent, addEvaluation})(StudentPage)
 
 
