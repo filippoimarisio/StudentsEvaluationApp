@@ -1,13 +1,13 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {signup} from '../../actions/actions.signuplogin'
+import {signUp} from '../../actions/actions.signuplogin'
 import SignUpForm from './SignUpForm'
 import {Redirect} from 'react-router-dom'
 
 class SignUpPage extends PureComponent {
 	handleSubmit = (data) => {
-		console.log('inthe hasuSignUp')
-		this.props.postSignup(data.email, data.password)
+		console.log('inthe hasuSignUp', data)
+		this.props.signUp(data.email, data.password)
 	}
 
 	render() {
@@ -33,4 +33,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, {postSignup: signup})(SignUpPage)
+export default connect(mapStateToProps, {signUp})(SignUpPage)

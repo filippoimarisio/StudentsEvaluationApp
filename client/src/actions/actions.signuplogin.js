@@ -25,9 +25,9 @@ export const logIn = logInData => dispatch => {
     })
   }
 
-  export const signup = (email, password) => (dispatch) =>
+  export const signUp = (email, password) => (dispatch) =>
 	request
-    .post(`${baseUrl}/teachers`)
+    .post(`${baseUrl}/signup`)
 		.send({ firstName: email, lastName: email, email, password })
 		.then(result => {
 			dispatch({
