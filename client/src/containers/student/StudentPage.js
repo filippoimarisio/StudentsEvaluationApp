@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import {fetchStudent} from '../../actions/actions.students'
+import CreateEvaluationForm from './EvaluationForm'
 
 
 class StudentPage extends React.PureComponent {
@@ -24,7 +25,8 @@ class StudentPage extends React.PureComponent {
                 <div>Student Page</div>
                 <div>{student.firstName}</div>
                 <div>{student.lastName}</div>
-                <img src={`${student.photo}`}/>            
+                <img src={`${student.photo}`}/>
+                <CreateEvaluationForm/>         
             </div>
         )
     }
