@@ -53,15 +53,15 @@ export const fetchStudent = (studentId) => (dispatch) => {
   .catch(err => alert(err))
   }
 
-  // export const addEvaluation = (evaluation) => (dispatch, getState) => {
-  //   const state = getState();
-  //   request
-  //     .put(`${baseUrl}/students/${evaluation.studentId}`)
-  //     .send(evaluation.lastEvaluation)
-  //     .then(response =>
-  //       dispatch({
-  //         type: ADD_EVALUATION,
-  //         payload: response.body
-  //       })
-  //     );
-  //   };
+  export const addEvaluation = (evaluation) => (dispatch) => {
+    console.log('in the addevaluation action creator',evaluation)
+    request
+      .put(`${baseUrl}/students/${evaluation.studentId}`)
+      .send(evaluation)
+      .then(response =>
+        dispatch({
+          type: ADD_EVALUATION,
+          payload: response.body
+        })
+      );
+    };
