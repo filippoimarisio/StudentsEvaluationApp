@@ -42,16 +42,20 @@ class StudentsListContainer extends React.PureComponent {
 
     return <div>
     <h1>Students</h1>
+    
     <ul>
       { students.map(student =>
-        <li key={student.id} onClick={() => this.selectStudent(student.id)}>
+        <li key={student.id} >
+        <div onClick={() => this.selectStudent(student.id)}>
           <div>First Name: { student.firstName }</div>
           <div>Last Name: { student.lastName }</div>
           <img src={ student.photo }/>
-          <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
+        </div>
+        <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
       )}
     </ul>
+    
     <AddAStudent addAStudent={this.addAStudent} />
   </div>
   }
@@ -59,6 +63,8 @@ class StudentsListContainer extends React.PureComponent {
 
 
 const mapStateToProps = (state) => {
+  console.log('in the maspstatetoprops', state.students.studentsByBatch)
+
     return {
     batchId: state.batchId,
     students: state.students.studentsByBatch

@@ -12,9 +12,9 @@ export default function(state = {}, action ) {
             return action.payload
 
         case DELETE_STUDENT:
-        console.log('in the fetchbatchstudents reducer',action.payload)
+        console.log('in the fetchbatchstudents reducer',action.payload, state.studentsByBatch)
 
-            return state.students.studentsByBatch.filter(student => student.id !== action.payload)
+            return state.studentsByBatch.filter(student => student.id !== action.payload)
 
         default: 
             return state
