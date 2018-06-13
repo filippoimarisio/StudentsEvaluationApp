@@ -7,6 +7,7 @@ import {addAStudent} from '../../actions/actions.students'
 import Button from "@material-ui/core/Button";
 import {deleteStudent} from '../../actions/actions.students'
 import {selectStudent} from '../../actions/actions.student'
+import './StudentsListContainer.css'
 
 
 class StudentsListContainer extends React.PureComponent {
@@ -47,7 +48,36 @@ class StudentsListContainer extends React.PureComponent {
 
     return <div>
     <h1>Students</h1>
+    <div className='batchLevelOverview'>
+      <table>
+        <tbody>
+          <tr>
+            {students.map(student => {
+            if (student.lastEvaluation == 'green')
+            return (
+              <td key={student.id} className='greenTable'>
+              </td>
+            )
+            if (student.lastEvaluation == 'yellow')
+            return (
+              <td key={student.id} className='yellowTable'>
+              </td>
+            )
+            if (student.lastEvaluation == 'red')
+            return (
+              <td key={student.id} className='redTable'>
+              </td>
+            )
+            })}
+          </tr>
+        </tbody>
+      </table>
+    </div>
     
+    <div>
+      
+    </div>
+
     <ul>
       { students.map(student =>
         <li key={student.id} >
@@ -78,3 +108,18 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent, selectStudent})(StudentsListContainer)
+
+
+          // <table>
+          //   <tbody>
+          //     {OrderedQuizzes.map(quiz => (
+          //       <tr key={quiz.id}>
+          //         <td>{quiz.id}</td>
+          //         <td>
+          //         </td>
+          //         <td>
+          //         </td>
+          //       </tr>
+          //     ))}
+          //   </tbody>
+          // </table>
