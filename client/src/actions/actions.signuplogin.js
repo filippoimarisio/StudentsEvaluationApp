@@ -1,9 +1,10 @@
 import * as request from "superagent";
 
 export const LOG_IN = "LOG_IN";
-export const SIGN_UP = "SIGN_UP";
+export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
+export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
 
-
+const baseUrl = 'http://localhost:4000'
 
 export const logIn = logInData => dispatch => {
   request
@@ -24,16 +25,23 @@ export const logIn = logInData => dispatch => {
     })
   }
 
-  export const signUp = (email, password) => (dispatch) =>
+  export const signup = (email, password) => (dispatch) =>
 	request
-		.post('http://localhost:4000/signup')
-		.send({ email, password })
+    .post(`${baseUrl}/teachers`)
+		.send({ firstName: email, lastName: email, email, password })
 		.then(result => {
 			dispatch({
-				type: SIGN_UP
+				type: USER_SIGNUP_SUCCESS
 			})
 		})
 		.catch(err => {
+			if (err.status === 400) {
+				dispatch({
+					type: USER_SIGNUP_FAILED,
+					payload: err.response.body.message || 'Unknown error'
+				})
+			}
+			else {
 				console.error(err)
 			}
-		)
+		})

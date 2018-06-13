@@ -24,7 +24,7 @@ export default class StudentController {
         @Param('batch') batch: number 
     ) {
         const studentsByBatch =  await Student.find({ where : {batch} })
-        return {studentsByBatch}
+        return {studentsByBatch, batch}
     }
 
 

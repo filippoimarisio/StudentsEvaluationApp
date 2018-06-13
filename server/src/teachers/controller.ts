@@ -4,7 +4,7 @@ import Teacher from './entity';
 @JsonController()
 export default class TeacherController {
 
-  @Post('/teachers')
+  @Post('/signup')
   async signup(
     @Body() data: Teacher
   ) {
