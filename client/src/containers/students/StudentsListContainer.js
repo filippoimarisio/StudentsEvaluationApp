@@ -6,7 +6,7 @@ import AddAStudent from './CreateStudentForm'
 import {addAStudent} from '../../actions/actions.students'
 import Button from "@material-ui/core/Button";
 import {deleteStudent} from '../../actions/actions.students'
-
+import {selectStudent} from '../../actions/actions.student'
 
 
 class StudentsListContainer extends React.PureComponent {
@@ -29,6 +29,10 @@ class StudentsListContainer extends React.PureComponent {
     this.props.deleteStudent(studentId);
   }
 
+  selectStudent(studentId) {
+    this.props.selectStudent(studentId);
+  }
+
 
   render() {
 
@@ -46,11 +50,11 @@ class StudentsListContainer extends React.PureComponent {
     <ul>
       { students.map(student =>
         <li key={student.id} >
-        <div onClick={() => this.selectStudent(student.id)}>
-          <div>First Name: { student.firstName }</div>
-          <div>Last Name: { student.lastName }</div>
-          <img src={ student.photo }/>
-        </div>
+          <Link to={`/students/${student.id}`} onClick={() => this.selectStudent(student.id)}>
+            <div>First Name: { student.firstName }</div>
+            <div>Last Name: { student.lastName }</div>
+            <img src={ student.photo }/>
+          </Link>
         <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
       )}
@@ -71,4 +75,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent})(StudentsListContainer)
+export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent, selectStudent})(StudentsListContainer)
