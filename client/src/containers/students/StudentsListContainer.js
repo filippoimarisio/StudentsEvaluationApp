@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import {fetchBatchStudents} from '../../actions/actions.students'
 import AddAStudent from './CreateStudentForm'
 import {addAStudent} from '../../actions/actions.students'
+import Button from "@material-ui/core/Button";
+import {deleteStudent} from '../../actions/actions.students'
+
 
 
 class StudentsListContainer extends React.PureComponent {
@@ -11,6 +14,7 @@ class StudentsListContainer extends React.PureComponent {
 
   componentWillMount() {
     this.props.fetchBatchStudents(this.props.batchId);
+    console.log(this.props.batchId)
   }
 
   addAStudent = (student) => {
@@ -21,10 +25,15 @@ class StudentsListContainer extends React.PureComponent {
     this.props.addAStudent(student);
   };
 
+  deleteStudent(studentId) {
+    this.props.deleteStudent(studentId);
+  }
+
 
   render() {
 
     if(!this.props.students) {
+      console.log(this.props.students)
     this.componentWillMount()
         return  <div>Loading...</div>
     } 
@@ -39,6 +48,7 @@ class StudentsListContainer extends React.PureComponent {
           <div>First Name: { student.firstName }</div>
           <div>Last Name: { student.lastName }</div>
           <img src={ student.photo }/>
+          <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
       )}
     </ul>
@@ -55,4 +65,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchBatchStudents, addAStudent})(StudentsListContainer)
+export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent})(StudentsListContainer)

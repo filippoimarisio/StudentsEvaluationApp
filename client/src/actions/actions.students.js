@@ -1,6 +1,8 @@
 import * as request from "superagent";
 export const FETCH_BATCH_STUDENTS = 'FETCH_BATCH_STUDENTS'
 export const ADD_A_STUDENT = 'ADD_A_STUDENT'
+export const DELETE_STUDENT = 'DELETE_STUDENT'
+
 
 const baseUrl = "http://localhost:4000";
 
@@ -27,3 +29,13 @@ const baseUrl = "http://localhost:4000";
           })
         );
       };
+
+  export const deleteStudent = (studentId) => (dispatch) => {
+    request
+      .delete(`${baseUrl}/students/${studentId}`)
+      .then(response => dispatch({
+        type: DELETE_STUDENT,
+        payload: studentId
+      })
+    );
+};
