@@ -8,11 +8,16 @@ import {addAStudent} from '../../actions/actions.students'
 
 class StudentsListContainer extends React.PureComponent {
 
+
   componentWillMount() {
     this.props.fetchBatchStudents(this.props.batchId);
   }
 
-  addAStudent = student => {
+  addAStudent = (student) => {
+    const { batchId } = this.props.batchId
+
+    student = {...student, batch : batchId}
+    console.log('in the addastudent function', batchId)
     this.props.addAStudent(student);
   };
 
