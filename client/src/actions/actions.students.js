@@ -5,7 +5,6 @@ const baseUrl = "http://localhost:4000";
 
 
  export const fetchBatchStudents = (batchId) => (dispatch) => {
-      console.log(batchId,'inside the students action creator')
     request
     .get(`${baseUrl}/students/batch/${batchId.batchId}`)
     .then(response => dispatch({

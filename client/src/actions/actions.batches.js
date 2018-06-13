@@ -25,7 +25,6 @@ export const fetchAllBatches = () => dispatch => {
 
   export const createBatch = batch => (dispatch, getState) => {
   const state = getState();
-  console.log('in the actioncreator', batch)
   request
     .post(`${baseUrl}/batches`)
     .send(batch)

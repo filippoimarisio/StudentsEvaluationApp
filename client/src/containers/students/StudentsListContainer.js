@@ -6,15 +6,6 @@ import {fetchBatchStudents} from '../../actions/actions.students'
 
 class StudentsListContainer extends React.PureComponent {
 
-    // componentDidReceiveProps() {
-    //     console.log('in the componentwillmount', this.props)
-    //     const { batchId } = this.props.match.params
-    
-    //     if (!this.props.students) {
-    //       this.props.selectBatch(batchId)
-    //     }
-    //   }
-
   componentWillMount() {
     this.props.fetchBatchStudents(this.props.batchId);
   }
@@ -22,11 +13,7 @@ class StudentsListContainer extends React.PureComponent {
 
   render() {
 
-    
-  
-
     if(!this.props.students) {
-      console.log('in the if conditiona rendering')
         return  <div>Loading...</div>
     } 
 
@@ -50,7 +37,6 @@ class StudentsListContainer extends React.PureComponent {
 
 
 const mapStateToProps = (state) => {
-console.log('in the mapstatetopropsofstudentslist', state.batchId, state.students)
     return {
     batchId: state.batchId,
     students: state.students.studentsByBatch
