@@ -1,12 +1,14 @@
 import batches from './reducer.batches'
-import students from './reducer.studentsByBatch'
 import login from './reducer.login'
 import signup from './reducer.signup'
+import batchId from './reducer.batch'
+import students from './reducer.fetchBatchStudents'
 
 
 export default {
     batches,
-    students,
+    batchId,
     login,
-    signup
+    signup,
+    students
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-// import {fetchAllStudents, selectBatch, createBatch} from '../../actions/actions.batches'
+import {fetchBatchStudents} from '../../actions/actions.students'
 // import CreateBatchForm from './CreateBatchForm'
 
 class StudentsListContainer extends React.PureComponent {
@@ -15,35 +15,26 @@ class StudentsListContainer extends React.PureComponent {
     //     }
     //   }
 
-//   componentWillMount() {
-//     this.props.fetchAllBatches();
-//   }
-
-//   selectBatch(batchId) {
-//     this.props.selectBatch(batchId);
-//   }
-
-//   createBatch = batch => {
-//     this.props.createBatch(batch);
-//   };
+  componentWillMount() {
+    this.props.fetchBatchStudents(this.props.batchId);
+  }
 
 
   render() {
 
-
-
-
-    // const { students } = this.props.students.studentsByBatch
-    // const { batchId } = this.props.students.batch
-    // console.log(students,'in the render function')
+    
+  
 
     if(!this.props.students) {
+      console.log('in the if conditiona rendering')
         return  <div>Loading...</div>
     } 
 
+    const { students } = this.props
+
     return <div>
     <h1>Students</h1>
-    {/* <ul>
+    <ul>
       { students.map(student =>
         <li key={student.id} onClick={() => this.selectStudent(student.id)}>
           <div>First Name: { student.firstName }</div>
@@ -51,7 +42,7 @@ class StudentsListContainer extends React.PureComponent {
           <div>{ student.photo }</div>
         </li>
       )}
-    </ul> */}
+    </ul>
     {/* <CreateBatchForm createBatch={this.createBatch} /> */}
   </div>
   }
@@ -59,10 +50,11 @@ class StudentsListContainer extends React.PureComponent {
 
 
 const mapStateToProps = (state) => {
-console.log('in the mapstatetopropsofstudentslist', state.students)
+console.log('in the mapstatetopropsofstudentslist', state.batchId, state.students)
     return {
-    students: state.students
+    batchId: state.batchId,
+    students: state.students.studentsByBatch
   }
 }
 
-export default connect(mapStateToProps)(StudentsListContainer)
+export default connect(mapStateToProps, {fetchBatchStudents})(StudentsListContainer)
