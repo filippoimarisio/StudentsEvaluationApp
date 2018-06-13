@@ -55,6 +55,7 @@ class StudentsListContainer extends React.PureComponent {
             <div>First Name: { student.firstName }</div>
             <div>Last Name: { student.lastName }</div>
             <img src={ student.photo }/>
+            <div>Last Evaluation: { student.lastEvaluation }</div>
           </Link>
         <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
