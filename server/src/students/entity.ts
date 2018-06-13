@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'ty
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 import Batch from '../batches/entity'
 import Evaluation from '../evaluations/entity'
-import { IsIn } from 'class-validator';
+import { IsIn, IsOptional } from 'class-validator';
 import { colors } from '../logic';
 
 @Entity()
@@ -20,6 +20,7 @@ export default class Student extends BaseEntity {
     @Column('text')
     photo: string
 
+    @IsOptional()
     @Column('text', {nullable:true})
     @IsIn(colors)
     lastEvaluation: string

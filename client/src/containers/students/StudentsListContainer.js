@@ -21,8 +21,9 @@ class StudentsListContainer extends React.PureComponent {
     const { batchId } = this.props.batchId
 
     student = {...student, batch : batchId}
-    console.log('in the addastudent function', batchId)
     this.props.addAStudent(student);
+    console.log('in the addastudent function', batchId, student)
+
   };
 
   deleteStudent(studentId) {
