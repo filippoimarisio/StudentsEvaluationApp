@@ -50,11 +50,11 @@ class StudentsListContainer extends React.PureComponent {
     <ul>
       { students.map(student =>
         <li key={student.id} >
-        <div onClick={() => this.selectStudent(student.id)}>
-          <div>First Name: { student.firstName }</div>
-          <div>Last Name: { student.lastName }</div>
-          <img src={ student.photo }/>
-        </div>
+          <Link to={`/students/${student.id}`} onClick={() => this.selectStudent(student.id)}>
+            <div>First Name: { student.firstName }</div>
+            <div>Last Name: { student.lastName }</div>
+            <img src={ student.photo }/>
+          </Link>
         <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
         </li>
       )}
