@@ -31,11 +31,13 @@ class StudentPage extends React.PureComponent {
 
         return (
             <div>
-                <div>Student Page</div>
-                <div>Name: {student.firstName}</div>
-                <div>Surname: {student.lastName}</div>
-                <img src={`${student.photo}`}/>
-                <div>Last Evaluation: {student.lastEvaluation}</div>
+                <div className='studentBio'>
+                    <div>Student Page</div>
+                    <div>Name: {student.firstName}</div>
+                    <div>Surname: {student.lastName}</div>
+                    <img src={`${student.photo}`}/>
+                    <div>Last Evaluation: {student.lastEvaluation}</div>
+                </div>
                 <CreateEvaluationForm addEvaluation={this.addEvaluation}/>         
             </div>
         )
