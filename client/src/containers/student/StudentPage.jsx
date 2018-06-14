@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import {fetchStudent} from '../../actions/actions.students'
 import CreateEvaluationForm from './EvaluationForm'
-import {addEvaluation} from '../../actions/actions.students'
+import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
 
 
 class StudentPage extends React.PureComponent {
@@ -17,8 +17,15 @@ class StudentPage extends React.PureComponent {
         const lastEvaluation = evaluation.grade
         this.props.addEvaluation({studentId, lastEvaluation});
         console.log('in the addevaluation function', {studentId, lastEvaluation})
-
       };
+
+    storeEvaluation = (evaluation) => {
+        console.log('in the storeevaluation function', evaluation)
+        const student = this.props.studentId
+        const grade = evaluation.grade
+        const remark = evaluation.remark
+        this.props.storeEvaluation({student, grade, remark})
+    }
 
 
     render() {
@@ -38,7 +45,7 @@ class StudentPage extends React.PureComponent {
                     <img src={student.photo}/>
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
-                <CreateEvaluationForm addEvaluation={this.addEvaluation}/>         
+                <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
             </div>
         )
     }
@@ -48,10 +55,11 @@ const mapStateToProps = (state) => {
   console.log('in SP mstp', state.studentId)
     return {
       studentId: state.student.studentId,
-      student: state.fetchstudent
+      student: state.fetchstudent,
+      teacher: state.currentUser
     }
   }
   
-export default connect(mapStateToProps, {fetchStudent, addEvaluation})(StudentPage)
+export default connect(mapStateToProps, {fetchStudent, addEvaluation, storeEvaluation})(StudentPage)
 
 

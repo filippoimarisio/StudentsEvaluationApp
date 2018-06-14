@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 import Student from '../students/entity'
 import User from '../users/entity'
-import { IsIn } from 'class-validator';
+import { IsIn, IsOptional } from 'class-validator';
 import { colors } from '../logic';
 
 
@@ -14,7 +14,7 @@ export default class Evaluation extends BaseEntity {
 
     @Column('text')
     @IsIn(colors)
-    color: string
+    grade: string
 
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
     date: string;
@@ -25,6 +25,7 @@ export default class Evaluation extends BaseEntity {
     @ManyToOne(_=>Student, student => student.id)
     student: Student
 
+    @IsOptional()
     @ManyToOne(_=>User, user => user.id)
     user: User
 }

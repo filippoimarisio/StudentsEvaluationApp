@@ -17,6 +17,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <header className="App-header">
+            <h1 className="App-title">EvaluApp</h1>
+        </header>
         <nav>
           <TopBar />
         </nav>

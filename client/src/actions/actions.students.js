@@ -5,6 +5,7 @@ export const DELETE_STUDENT = 'DELETE_STUDENT'
 export const FETCH_STUDENT = 'FETCH_STUDENT'
 export const ADD_EVALUATION = 'ADD_EVALUATION'
 export const RANDOM_STUDENT = 'RANDOM_STUDENT'
+export const STORE_EVALUATION = 'STORE_EVALUATION'
 
 
 const baseUrl = "http://localhost:4000";
@@ -77,3 +78,17 @@ export const fetchStudent = (studentId) => (dispatch) => {
       })) 
       .catch(err => alert(err))
       }
+
+
+  export const storeEvaluation = evaluation => (dispatch) => {
+    console.log('in the storeevaluation actioncontrol', evaluation)
+      request
+        .post(`${baseUrl}/evaluations`)
+        .send(evaluation)
+        .then(response =>
+          dispatch({
+            type: STORE_EVALUATION,
+            payload: response.body
+          })
+        );
+      };

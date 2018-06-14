@@ -14,13 +14,18 @@ export default class CreateEvaluationForm extends React.PureComponent {
   handleSubmit = (event) => {
     event.preventDefault()
 
+      this.props.storeEvaluation({
+        grade: this.state.grade,
+        remark: this.state.remark,
+      })
+      
       this.props.addEvaluation({
         grade: this.state.grade,
         remark: this.state.remark,
 
-      })
-    
+      });
   }
+  
 
   render() {
     return (
