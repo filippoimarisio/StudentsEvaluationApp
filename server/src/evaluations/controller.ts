@@ -1,7 +1,7 @@
 import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError} from 'routing-controllers'
 import Evaluation from './entity'
 import Student from '../students/entity';
-import Teacher from '../teachers/entity';
+import User from '../users/entity';
 
 
 @JsonController()
@@ -28,8 +28,8 @@ export default class EvaluationController {
         const student = (await Student.findOne(evaluation.student))!
         evaluation.student = student
 
-        const teacher = (await Teacher.findOne(evaluation.teacher))!
-        evaluation.teacher = teacher
+        const user = (await User.findOne(evaluation.user))!
+        evaluation.user = user
 
         return evaluation.save()
     }

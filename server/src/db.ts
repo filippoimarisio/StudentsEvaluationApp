@@ -5,7 +5,7 @@ import { snakeCase } from 'typeorm/util/StringUtils'
 import Batch from './batches/entity'
 import Student from './students/entity'
 import Evaluation from './evaluations/entity'
-import Teacher from './teachers/entity'
+import User from './users/entity'
 
 
 
@@ -36,7 +36,7 @@ export default () =>
           Batch,
           Student,
           Evaluation,
-          Teacher
+          User
       ],
       synchronize: true,
       logging: true,
