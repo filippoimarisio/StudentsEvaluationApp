@@ -22,13 +22,20 @@ class BatchesListContainer extends React.PureComponent {
 
 
   render() {
+
+    if(!this.props.batches) {
+      console.log(this.props.batches)
+    this.componentWillMount()
+        return  <div>Loading...</div>
+    }
+
     const { batches } = this.props
     return <div className='batchContainer'>
     <h1>Batches</h1>
     <ul>
       { batches.map(batch =>
-      <div className='batchElement'>
-        <Link to={`/batches/${batch.id}`} key={batch.id} onClick={() => this.selectBatch(batch.id)}>
+      <div key={batch.id} className='batchElement'>
+        <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
           <div>Batch # { batch.batchNumber }</div>
           <div>Start date: { batch.startDate }</div>
           <div>End date: { batch.endDate }</div>
@@ -44,8 +51,10 @@ class BatchesListContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state,'inside batches MSTP')
   return {
-    batches: state.batches
+    batches: state.batches,
+    
   }
 }
 

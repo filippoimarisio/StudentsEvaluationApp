@@ -1,6 +1,7 @@
 import * as React from 'react'
 import './CreateBatchForm.css'
 
+
 export default class CreateBatchForm extends React.PureComponent {
 
   handleChange = (event) => {
@@ -50,9 +51,7 @@ export default class CreateBatchForm extends React.PureComponent {
           <input type="text" name="endDate" onChange={this.handleChange} />
         </label>
         </div>
-        
         <input type="submit" value="Submit" />
-      
       </form>
     </div>)
   }
