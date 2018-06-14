@@ -22,7 +22,7 @@ export default class Evaluation extends BaseEntity {
     @Column('text', {nullable: true})
     remark: string
 
-    @ManyToOne(_=>Student, student => student.id)
+    @ManyToOne(_=>Student, student => student.id, {eager:false})
     student: Student
 
     @IsOptional()

@@ -29,15 +29,40 @@ class StudentPage extends React.PureComponent {
 
 
     render() {
-        if(!this.props.student) {
+        if(!this.props.student.evaluation) {
         this.componentWillMount()
             return  <div>Loading...</div>
           } 
       
         const { student } = this.props
+        console.log({student})
 
         return (
             <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Grade
+                            </th>
+                            <th>
+                                Remark
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {student.evaluation.map(score => (
+                            <tr key={score.id} >
+                                <td>{score.date}</td>
+                                <td>{score.grade}</td>
+                                <td>{score.remark}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                 <div className='studentBio'>
                     <div>Student Page</div>
                     <div>Name: {student.firstName}</div>
