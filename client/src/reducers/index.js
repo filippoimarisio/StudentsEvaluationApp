@@ -5,6 +5,7 @@ import batchId from './reducer.batch'
 import students from './reducer.fetchBatchStudents'
 import student from './reducer.student'
 import fetchstudent from './reducer.studentPage'
+import randomstudent from './reducer.randomStudent'
 
 
 export default {
@@ -14,5 +15,6 @@ export default {
     signup,
     students,
     student,
-    fetchstudent
+    fetchstudent,
+    randomstudent
 }

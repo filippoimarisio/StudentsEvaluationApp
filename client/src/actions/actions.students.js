@@ -4,6 +4,7 @@ export const ADD_A_STUDENT = 'ADD_A_STUDENT'
 export const DELETE_STUDENT = 'DELETE_STUDENT'
 export const FETCH_STUDENT = 'FETCH_STUDENT'
 export const ADD_EVALUATION = 'ADD_EVALUATION'
+export const RANDOM_STUDENT = 'RANDOM_STUDENT'
 
 
 const baseUrl = "http://localhost:4000";
@@ -65,3 +66,14 @@ export const fetchStudent = (studentId) => (dispatch) => {
         })
       );
     };
+
+    
+    export const randomStudent = (batchId) => (dispatch) => {
+      request
+      .get(`${baseUrl}/students/batch/randomstudent/${batchId.batchId}`)
+      .then(response => dispatch({
+        type: RANDOM_STUDENT,
+        payload: response.body
+      })) 
+      .catch(err => alert(err))
+      }

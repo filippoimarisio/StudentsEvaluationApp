@@ -7,12 +7,11 @@ export default function(state = {}, action ) {
         
         case FETCH_STUDENT:
             return action.payload
+        
+        case ADD_EVALUATION:
+            return action.payload
 
         default: 
             return state
-        
-        case ADD_EVALUATION:
-        console.log('in reducer.studentpage', action.payload)
-            return action.payload
     }  
 }

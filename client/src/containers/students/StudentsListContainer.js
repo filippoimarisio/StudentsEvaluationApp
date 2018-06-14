@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-import {fetchBatchStudents} from '../../actions/actions.students'
+import {fetchBatchStudents, randomStudent} from '../../actions/actions.students'
 import AddAStudent from './CreateStudentForm'
 import {addAStudent} from '../../actions/actions.students'
 import Button from "@material-ui/core/Button";
@@ -35,6 +35,10 @@ class StudentsListContainer extends React.PureComponent {
     this.props.selectStudent(studentId);
   }
 
+  randomStudent(batchId) {
+    this.props.randomStudent(batchId);
+  }
+ 
 
   render() {
 
@@ -91,8 +95,12 @@ class StudentsListContainer extends React.PureComponent {
         </li>
       )}
     </ul>
-    
-    <AddAStudent addAStudent={this.addAStudent} />
+    <div className='askQuestion'>
+      <Button><Link to={`/randomstudent`} className="questionButton" onClick={() => this.randomStudent(this.props.batchId)}>Pick a student!</Link></Button>
+    </div>
+    <div className='addStudent'>
+      <AddAStudent addAStudent={this.addAStudent} />
+    </div>
   </div>
   }
 }
@@ -107,19 +115,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent, selectStudent})(StudentsListContainer)
+export default connect(mapStateToProps, {fetchBatchStudents, addAStudent, deleteStudent, selectStudent,randomStudent})(StudentsListContainer)
 
-
-          // <table>
-          //   <tbody>
-          //     {OrderedQuizzes.map(quiz => (
-          //       <tr key={quiz.id}>
-          //         <td>{quiz.id}</td>
-          //         <td>
-          //         </td>
-          //         <td>
-          //         </td>
-          //       </tr>
-          //     ))}
-          //   </tbody>
-          // </table>
