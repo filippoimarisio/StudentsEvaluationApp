@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './CreateBatchForm.css'
 
 export default class CreateBatchForm extends React.PureComponent {
 
@@ -24,11 +25,11 @@ export default class CreateBatchForm extends React.PureComponent {
 
   render() {
     return (
-    <div>
+    <div className='createBatchForm'>
       <h2>Create a new Batch</h2>
 
       <form onSubmit={this.handleSubmit}>
-      <div>
+      
       <div>
         <label>
           Batch Number:
@@ -51,7 +52,7 @@ export default class CreateBatchForm extends React.PureComponent {
         </div>
         
         <input type="submit" value="Submit" />
-        </div>
+      
       </form>
     </div>)
   }

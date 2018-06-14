@@ -78,9 +78,11 @@ class StudentsListContainer extends React.PureComponent {
       </table>
     </div>
     
-    <div>
-      
+    
+    <div className='askQuestion'>
+      <Button><Link to={`/randomstudent`} className="questionButton" onClick={() => this.randomStudent(this.props.batchId)}>Pick a student!</Link></Button>
     </div>
+    
 
     <ul>
       { students.map(student =>
@@ -94,9 +96,6 @@ class StudentsListContainer extends React.PureComponent {
         </div>
       )}
     </ul>
-    <div className='askQuestion'>
-      <Button><Link to={`/randomstudent`} className="questionButton" onClick={() => this.randomStudent(this.props.batchId)}>Pick a student!</Link></Button>
-    </div>
     <div className='addStudent'>
       <AddAStudent addAStudent={this.addAStudent} />
     </div>

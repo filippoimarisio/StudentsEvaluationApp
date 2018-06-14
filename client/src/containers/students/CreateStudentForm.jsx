@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './CreateStudentForm.css'
 
 export default class AddAStudent extends React.PureComponent {
 
@@ -24,7 +25,7 @@ export default class AddAStudent extends React.PureComponent {
 
   render() {
     return (
-    <div>
+    <div className='createStudentForm'>
       <h2>Add a student</h2>
 
       <form onSubmit={this.handleSubmit}>
