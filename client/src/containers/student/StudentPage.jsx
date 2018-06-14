@@ -5,6 +5,7 @@ import CreateEvaluationForm from './EvaluationForm'
 import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
 import Moment from 'react-moment'
 import Paper from "@material-ui/core/Paper";
+import './StudentPage.css'
 
 
 
@@ -39,7 +40,6 @@ class StudentPage extends React.PureComponent {
 
         return (
             <div>
-                <Paper className="styles" elevation={4}>
                 <table>
                     <thead>
                         <tr>
@@ -67,14 +67,14 @@ class StudentPage extends React.PureComponent {
                     </tbody>
                 </table>
                 <div className='studentBio'>
-                    <div>Student Page</div>
-                    <div>Name: {student.firstName}</div>
-                    <div>Surname: {student.lastName}</div>
+                    
+                    <h2>{student.firstName} {student.lastName}</h2>
                     <img src={student.photo}/>
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
+                <div className='evaluationForm'>
                 <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
-                </Paper>
+                </div>
             </div>
         )
     }

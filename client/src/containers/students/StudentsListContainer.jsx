@@ -77,7 +77,7 @@ class StudentsListContainer extends React.PureComponent {
         </tbody>
       </table>
     </div>
-    
+      
     
     <div className='askQuestion'>
       <Button><Link to={`/randomstudent`} className="questionButton" onClick={() => this.randomStudent(this.props.batchId)}>Pick a student!</Link></Button>

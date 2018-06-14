@@ -1,0 +1,16 @@
+table {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 20px
+}
+
+.evaluationForm {
+    margin-top: 30px;
+    margin-bottom: 1000px
+}
+
+td, th {
+    width: 50px;
+    margin-right: 20px;
+    margin-left: 20px
+}

@@ -1,3 +1,10 @@
+table {
+    position: relative;
+    margin-top: 20px;
+    border-spacing: 5px;
+    padding: 15px;
+}
+
 .greenTable {
     background-color: green;
     height: 30px;
@@ -34,6 +41,6 @@
 }
 
 .askQuestion {
-    margin-top: 30px;
-    margin-bottom: 30px
+    margin-top: 20px;
+    margin-bottom: 40px
 }
