@@ -28,18 +28,27 @@ export default class AddAStudent extends React.PureComponent {
       <h2>Add a student</h2>
 
       <form onSubmit={this.handleSubmit}>
+      <div>
         <label>
           First Name:
           <input type="text" name="firstName" onChange={this.handleChange} />
         </label>
+        </div>
+
+        <div>
         <label>
           Last Name:
           <input type="text" name="lastName" onChange={this.handleChange} />
         </label>
+        </div>
+
+        <div>
         <label>
           Photo:
           <input type="text" name="photo" onChange={this.handleChange} />
         </label>
+        </div>
+        
         <input type="submit" value="Submit" />
       </form>
     </div>)
