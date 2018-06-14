@@ -1,4 +1,6 @@
 import React, {PureComponent} from 'react'
+import Button from '@material-ui/core/Button';
+
 
 export default class LoginForm extends PureComponent {
 	state = {}
@@ -33,7 +35,7 @@ export default class LoginForm extends PureComponent {
 					} onChange={ this.handleChange } />
 				</div>
 
-				<button type="submit">Login</button>
+				<Button href="/batches" type="submit">Login</Button>
 			</form>
 		)
 	}
