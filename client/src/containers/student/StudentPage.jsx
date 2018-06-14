@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import {fetchStudent} from '../../actions/actions.students'
 import CreateEvaluationForm from './EvaluationForm'
 import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
+import Moment from 'react-moment'
+import Paper from "@material-ui/core/Paper";
+
 
 
 class StudentPage extends React.PureComponent {
 
     componentWillMount() {
-        console.log('in the componentwillmount studentpage', this.props.studentId)
         this.props.fetchStudent(this.props.studentId);
     }
 
@@ -16,11 +18,9 @@ class StudentPage extends React.PureComponent {
         const studentId = this.props.studentId
         const lastEvaluation = evaluation.grade
         this.props.addEvaluation({studentId, lastEvaluation});
-        console.log('in the addevaluation function', {studentId, lastEvaluation})
       };
 
     storeEvaluation = (evaluation) => {
-        console.log('in the storeevaluation function', evaluation)
         const student = this.props.studentId
         const grade = evaluation.grade
         const remark = evaluation.remark
@@ -39,6 +39,7 @@ class StudentPage extends React.PureComponent {
 
         return (
             <div>
+                <Paper className="styles" elevation={4}>
                 <table>
                     <thead>
                         <tr>
@@ -56,7 +57,9 @@ class StudentPage extends React.PureComponent {
                     <tbody>
                         {student.evaluation.map(score => (
                             <tr key={score.id} >
+                                <Moment format="YYYY/MM/DD">
                                 <td>{score.date}</td>
+                                </Moment>
                                 <td>{score.grade}</td>
                                 <td>{score.remark}</td>
                             </tr>
@@ -71,13 +74,13 @@ class StudentPage extends React.PureComponent {
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
+                </Paper>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-  console.log('in SP mstp', state.studentId)
     return {
       studentId: state.student.studentId,
       student: state.fetchstudent,

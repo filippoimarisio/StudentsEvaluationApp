@@ -1,48 +1,49 @@
-import React from 'react'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
-import {withRouter} from 'react-router'
-import {userId} from '../../jwt'
-import {connect} from 'react-redux'
-import AccountIcon from 'material-ui-icons/AccountBox'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
 
-const TopBar = (props) => {
-  const { location, history, user } = props
+const styles = {
+  root: {
+    flexGrow: 1,
+    textAlign: "center"
+  }
+};
 
-  return (
-    <AppBar position="absolute" style={{zIndex:10}}>
-      <Toolbar>
-        
-        {
-          user &&
-          <Button color="inherit"><AccountIcon /> { user.firstName }</Button>
-        }
+// currentUser () => {
+//   const logInReducer=this.props
+// }
+export class SimpleAppBar extends PureComponent {
+  render() {
+    const { classes, logInReducer } = this.props;
+    return (
+      <div>
+        <AppBar position="static" color="primary" align="center">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+            
+            </Typography>
+            {logInReducer &&
+              logInReducer.jwt && <Button href="/quizzes">HOME</Button>}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
 
-        {
-          <Button color="inherit" onClick={() => history.push('/login')}>Log In</Button>
-        }
-        {
-          location.pathname.indexOf('login') > 0 &&
-          <Button color="inherit" onClick={() => history.push('/signup')}>Sign Up</Button>
-        }
-        {
-          <Button color="inherit" onClick={() => history.push('/batches')}>Home</Button>
-        }
-        {
-          <Button color="inherit" onClick={() => history.push('/logout')}>Log out</Button>
-        }
-      </Toolbar>
-    </AppBar>
-  )
-} 
+// SimpleAppBar.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
 
-const mapStateToProps = state => ({
-  user: state.currentUser && state.users &&
-    state.users[userId(state.currentUser.jwt)]
-})
-
-export default withRouter(
-  connect(mapStateToProps)(TopBar)
-)
+const mapStateToProps = ({ logInReducer }) => {
+  return {
+    logInReducer
+  };
+};
+export default connect(mapStateToProps)(SimpleAppBar);
