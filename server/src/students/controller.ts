@@ -78,10 +78,9 @@ export default class StudentController {
         //4. Pick the nth position in the colors array.
         //5. Filter the students arry by lastEvaluation color.
         //6. If the array is empty, start from point 3 again.
-        //7. If there is, pull out all the stuents with lastEv == chosen color in an array.
-        //8. Generate a random number between 0 and the array lenght
-        //9. Pick the nth position of the array.
-        //10. Return that student.
+        //7. Generate a random number between 0 and the array lenght
+        //8. Pick the nth position of the array.
+        //9. Return that student.
 
 
         //1.
@@ -124,8 +123,19 @@ export default class StudentController {
             return this.randomStudent(batch)
         }
         
+        //7
 
+        const randomNum = Math.floor(Math.random() * filteredStudents.length)
+        console.log(filteredStudents.length)
+        console.log(randomNum)
 
-        return {studentsByBatch, batch}
+        //8
+
+        const chosenStudent = filteredStudents[randomNum]
+        console.log(chosenStudent)
+
+        //9
+
+        return {chosenStudent}
     }
 }
