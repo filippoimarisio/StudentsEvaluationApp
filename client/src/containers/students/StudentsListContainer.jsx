@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {fetchBatchStudents, randomStudent} from '../../actions/actions.students'
 import AddAStudent from './CreateStudentForm'
 import {addAStudent} from '../../actions/actions.students'
-import Button from "@material-ui/core/Button";
+import Button from "material-ui/Button/Button.js";
 import {deleteStudent} from '../../actions/actions.students'
 import {selectStudent} from '../../actions/actions.student'
 import './StudentsListContainer.css'

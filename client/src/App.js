@@ -4,11 +4,12 @@ import './App.css';
 
 import BatchesListContainer from './containers/batches/BatchesListContainer'
 import StudentsListContainer from './containers/students/StudentsListContainer'
-import SignUpPage from './containers/signup/SignUp'
-import LoginComponent from './containers/signup/LogIn'
+import SignUpPage from './containers/signup/SignupPage'
+import LoginPage from './containers/login/LoginPage'
 import StudentPage from './containers/student/StudentPage'
 import AskQuestion from './containers/students/AskQuestion'
-
+import TopBar from './containers/style/navBar'
+ 
 
 
 class App extends Component {
@@ -16,15 +17,17 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">EvaluApp</h1>
-          </header>
+        <nav>
+          <TopBar />
+        </nav>
           <Route exact path="/batches" component={BatchesListContainer} />
           <Route exact path="/batches/:id" component={StudentsListContainer} />
-          <Route exact path="/login" component={LoginComponent} />
+          <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/students/:id" component={StudentPage} />
           <Route exact path="/randomstudent" component={AskQuestion} />
+          <Route exact path="/" render={ () => <Redirect to="/signup" /> } />
+
         </div>
       </Router>
     );

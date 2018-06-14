@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 import Student from '../students/entity'
-import Teacher from '../teachers/entity'
+import User from '../users/entity'
 import { IsIn } from 'class-validator';
 import { colors } from '../logic';
 
@@ -25,8 +25,8 @@ export default class Evaluation extends BaseEntity {
     @ManyToOne(_=>Student, student => student.id)
     student: Student
 
-    @ManyToOne(_=>Teacher, teacher => teacher.id)
-    teacher: Teacher
+    @ManyToOne(_=>User, user => user.id)
+    user: User
 }
 
 

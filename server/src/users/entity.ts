@@ -5,10 +5,20 @@ import * as bcrypt from 'bcrypt'
 import Evaluation from '../evaluations/entity';
 
 @Entity()
-export default class Teacher extends BaseEntity {
+export default class User extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   id?: number
+
+  @IsString()
+  @MinLength(2)
+  @Column('text')
+  firstName: string
+
+  @IsString()
+  @MinLength(2)
+  @Column('text')
+  lastName: string
 
   @IsEmail()
   @Column('text')
@@ -29,11 +39,7 @@ export default class Teacher extends BaseEntity {
     return bcrypt.compare(rawPassword, this.password)
   }
 
-  @OneToMany(_=> Evaluation, evaluation => evaluation.teacher)
+  @OneToMany(_=> Evaluation, evaluation => evaluation.user)
   evaluations: Evaluation[]
 }
 
-  // this is a relation, read more about them here:
-  // http://typeorm.io/#/many-to-one-one-to-many-relations
-  // @OneToMany(_ => Player, player => player.user) 
-  // players: Player[]
