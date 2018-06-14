@@ -21,3 +21,14 @@
 .batchLevelOverview {
     align-self: center
 }
+
+.studentElement {
+    float: left;
+    margin: 20px
+}
+
+.studentsListContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%
+}

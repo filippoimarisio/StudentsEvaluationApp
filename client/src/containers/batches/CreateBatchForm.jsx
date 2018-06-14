@@ -29,6 +29,7 @@ export default class CreateBatchForm extends React.PureComponent {
 
       <form onSubmit={this.handleSubmit}>
       <div>
+      <div>
         <label>
           Batch Number:
           <input type="text" name="batchNumber" onChange={this.handleChange} />
@@ -50,6 +51,7 @@ export default class CreateBatchForm extends React.PureComponent {
         </div>
         
         <input type="submit" value="Submit" />
+        </div>
       </form>
     </div>)
   }
