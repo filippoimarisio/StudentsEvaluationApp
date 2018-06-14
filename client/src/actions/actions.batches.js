@@ -24,14 +24,15 @@ export const fetchAllBatches = () => dispatch => {
 
 
   export const createBatch = batch => (dispatch, getState) => {
-  const state = getState();
+    const state = getState();
+
   request
     .post(`${baseUrl}/batches`)
     .send(batch)
     .then(response =>
       dispatch({
         type: CREATE_BATCH,
-        payload: response.body
+        payload: response.body, state
       })
     );
   };

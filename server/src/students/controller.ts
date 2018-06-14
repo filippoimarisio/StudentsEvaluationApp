@@ -1,4 +1,4 @@
-import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError, Delete} from 'routing-controllers'
+import {Get, JsonController, Param, Post, HttpCode, Body, Put, NotFoundError, Delete, BadRequestError} from 'routing-controllers'
 import Student from './entity'
 import Batch from '../batches/entity'
 
@@ -86,6 +86,7 @@ export default class StudentController {
         //1.
 
         const studentsByBatch =  await Student.find({ where : {batch} })
+        if (studentsByBatch.length == 0) throw new BadRequestError(`There are no students in this class`) 
 
         //2.
 

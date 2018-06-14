@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "material-ui": "next",
-    "material-ui-icons": "^1.0.0-beta.36",
+    "i": "^0.3.6",
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
+    "moment": "^2.22.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-moment": "^0.7.4",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.3.1",
@@ -24,4 +27,3 @@
   "main": "index.js",
   "license": "MIT"
 }
- 

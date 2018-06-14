@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {selectBatch} from '../../actions/actions.batch'
 import {fetchAllBatches, createBatch} from '../../actions/actions.batches'
 import CreateBatchForm from './CreateBatchForm'
+import './BatchesListContainer.css'
 
 class BatchesListContainer extends React.PureComponent {
 
@@ -21,26 +22,39 @@ class BatchesListContainer extends React.PureComponent {
 
 
   render() {
+
+    if(!this.props.batches) {
+      console.log(this.props.batches)
+    this.componentWillMount()
+        return  <div>Loading...</div>
+    }
+
     const { batches } = this.props
-    return <div>
+    return <div className='batchContainer'>
     <h1>Batches</h1>
     <ul>
       { batches.map(batch =>
-        <Link key={batch.id} to={`/batches/${batch.id}`} onClick={() => this.selectBatch(batch.id)}>
+      <div key={batch.id} className='batchElement'>
+        <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
           <div>Batch # { batch.batchNumber }</div>
           <div>Start date: { batch.startDate }</div>
           <div>End date: { batch.endDate }</div>
         </Link>
+        </div>
       )}
     </ul>
-    <CreateBatchForm createBatch={this.createBatch} />
+    <div className='createBatch'>
+      <CreateBatchForm createBatch={this.createBatch} />
+    </div>
   </div>
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state,'inside batches MSTP')
   return {
-    batches: state.batches
+    batches: state.batches,
+    
   }
 }
 

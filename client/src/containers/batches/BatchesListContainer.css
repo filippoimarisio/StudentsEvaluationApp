@@ -1,0 +1,17 @@
+.batchContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.batchElement {
+    float: left;
+    margin: 20px
+}
+
+.createBatch {
+    position: relative;
+    align-content: center;
+    align-items: center
+}
+

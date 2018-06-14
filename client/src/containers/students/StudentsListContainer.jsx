@@ -50,7 +50,7 @@ class StudentsListContainer extends React.PureComponent {
 
     const { students } = this.props
 
-    return <div>
+    return <div className='studentsListContainer'>
     <h1>Students</h1>
     <div className='batchLevelOverview'>
       <table>
@@ -77,27 +77,25 @@ class StudentsListContainer extends React.PureComponent {
         </tbody>
       </table>
     </div>
-    
-    <div>
       
-    </div>
-
-    <ul>
-      { students.map(student =>
-        <li key={student.id} >
-          <Link to={`/students/${student.id}`} onClick={() => this.selectStudent(student.id)}>
-            <div>First Name: { student.firstName }</div>
-            <div>Last Name: { student.lastName }</div>
-            <img src={ student.photo }/>
-            <div>Last Evaluation: { student.lastEvaluation }</div>
-          </Link>
-        <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
-        </li>
-      )}
-    </ul>
+    
     <div className='askQuestion'>
       <Button><Link to={`/randomstudent`} className="questionButton" onClick={() => this.randomStudent(this.props.batchId)}>Pick a student!</Link></Button>
     </div>
+    
+
+    <ul>
+      { students.map(student =>
+        <div className='studentElement' key={student.id} >
+          <Link to={`/students/${student.id}`} onClick={() => this.selectStudent(student.id)}>
+            <img src={ student.photo }/>
+            <div>{ student.firstName } { student.lastName }</div>
+            <div>Last Evaluation: { student.lastEvaluation }</div>
+          </Link>
+        <Button className="deleteButton" onClick={() => this.deleteStudent(student.id)}>Delete</Button>
+        </div>
+      )}
+    </ul>
     <div className='addStudent'>
       <AddAStudent addAStudent={this.addAStudent} />
     </div>

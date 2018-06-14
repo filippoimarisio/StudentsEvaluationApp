@@ -1,3 +1,12 @@
+table {
+    position: relative;
+    margin-top: 20px;
+    border-spacing: 5px;
+    padding: 15px;
+    margin-left:200px;
+    margin-right:200px
+}
+
 .greenTable {
     background-color: green;
     height: 30px;
@@ -20,4 +29,20 @@
 
 .batchLevelOverview {
     align-self: center
+}
+
+.studentElement {
+    float: left;
+    margin: 20px
+}
+
+.studentsListContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%
+}
+
+.askQuestion {
+    margin-top: 20px;
+    margin-bottom: 40px
 }
