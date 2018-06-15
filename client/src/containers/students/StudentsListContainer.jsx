@@ -49,6 +49,19 @@ class StudentsListContainer extends React.PureComponent {
     } 
 
     const { students } = this.props
+    
+    function compare(a,b)
+    {
+         if (a.lastEvaluation < b.lastEvaluation) {
+               return -1;
+         } else   if (a.lastEvaluation > b.lastEvaluation)  {
+               return 1; 
+         } else {
+               return 0;
+          }
+    } 
+
+    students.sort(compare);
 
     return <div className='studentsListContainer'>
     <h1>Students</h1>

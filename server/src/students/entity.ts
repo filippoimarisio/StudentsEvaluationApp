@@ -25,7 +25,7 @@ export default class Student extends BaseEntity {
     @IsIn(colors)
     lastEvaluation: string
 
-    @ManyToOne(_=> Batch, batch => batch.id )
+    @ManyToOne(_=> Batch, batch => batch.id, { cascade: true } )
     batch: Batch
 
     @OneToMany(_=> Evaluation, evaluation => evaluation.student, {eager:true} )
