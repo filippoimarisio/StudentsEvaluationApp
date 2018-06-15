@@ -73,14 +73,13 @@ export default class StudentController {
 
 
         //1. Get students from the the batch in an array.
-        //2. Create an array with 45 'red', 35 'yellows' and 20 'greens'
-        //3. Generate a random number between 0 and 99
-        //4. Pick the nth position in the colors array.
-        //5. Filter the students arry by lastEvaluation color.
-        //6. If the array is empty, start from point 3 again.
-        //7. Generate a random number between 0 and the array lenght
-        //8. Pick the nth position of the array.
-        //9. Return that student.
+        //2. Generate a random number between 1 and 100
+        //3. Assign the number to a different color based on its range
+        //4. Filter the students arry by lastEvaluation color.
+        //5. If the array is empty, start from point 3 again.
+        //6. Generate a random number between 0 and the array lenght
+        //7. Pick the nth position of the array.
+        //8. Return that student.
 
 
         //1.
@@ -90,52 +89,43 @@ export default class StudentController {
 
         //2.
 
-        const weightedArray = ['red','red','red','red','red','red','red','red','red','red',
-        'red','red','red','red','red','red','red','red','red','red','red','red','red','red',
-        'red','red','red','red','red','red','red','red','red','red','red','red','red','red',
-        'red','red','red','red','red','red','red','yellow','yellow','yellow','yellow','yellow',
-        'yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow',
-        'yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow',
-        'yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow',
-        'green','green','green','green','green','green','green','green','green','green','green',
-        'green','green','green','green','green','green','green','green','green',]
-        console.log(weightedArray.length)
+        const randomNumber = Math.floor((Math.random() * 100) + 1)
+        console.log(randomNumber)
 
         //3
 
-        const randomNumber = Math.floor(Math.random() * 100)
-        console.log(randomNumber)
+        let chosenColor = ''
+        if (randomNumber <= 45) chosenColor = 'red'
+        else if (randomNumber <= 80) chosenColor = 'yellow'
+        else chosenColor = 'green'
+        console.log(chosenColor)
 
         //4
 
-        const chosenColor = weightedArray[randomNumber]
-        console.log(chosenColor)
-
-        //5
         const filteredStudents = studentsByBatch.filter(student => {
              return student.lastEvaluation == chosenColor
         })
         console.log(filteredStudents)
 
-        //6
+        //5
 
         if (filteredStudents.length == 0) {
             console.log("no students with yellow") 
             return this.randomStudent(batch)
         }
         
-        //7
+        //6
 
         const randomNum = Math.floor(Math.random() * filteredStudents.length)
         console.log(filteredStudents.length)
         console.log(randomNum)
 
-        //8
+        //7
 
         const chosenStudent = filteredStudents[randomNum]
         console.log(chosenStudent)
 
-        //9
+        //8
 
         return {chosenStudent}
     }
