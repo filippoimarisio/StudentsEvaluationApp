@@ -28,7 +28,8 @@ class StudentPage extends React.PureComponent {
         const student = this.props.studentId
         const grade = evaluation.grade
         const remark = evaluation.remark
-        this.props.storeEvaluation({student, grade, remark})
+        const date = evaluation.date
+        this.props.storeEvaluation({student, grade, remark, date})
     }
 
 
@@ -72,14 +73,14 @@ class StudentPage extends React.PureComponent {
                 <div className='studentBio'>
                     
                     <h2>{student.firstName} {student.lastName}</h2>
-                    <img src={student.photo}/>
+                    <img src={student.photo} />
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <div className='evaluationForm'>
                 <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
                 </div>
                 <div className='saveandnext'>
-                    <Button ><Link to={`/batches/${student.id}`} >Save and next</Link></Button>
+                    <Button ><Link to={`/batches/${student.id}`} >Next</Link></Button>
                 </div>
             </div>
         )
