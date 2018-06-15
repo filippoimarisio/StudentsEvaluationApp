@@ -27,7 +27,7 @@ export default class EvaluationController {
     ) {
         const student = (await Student.findOne(evaluation.student))!
         evaluation.student = student
-
+        console.log(evaluation,'in the post evaluation controller', student)
         const user = (await User.findOne(evaluation.user))!
         evaluation.user = user
 

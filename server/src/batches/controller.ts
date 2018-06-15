@@ -20,10 +20,10 @@ export default class BatchController {
 
     @Post('/batches')
     @HttpCode(201)
-    createBatch(
+    async createBatch(
         @Body() batch : Batch
     ) {
-        return batch.save()
+        await batch.save()
     }
 
     @Delete('/batches/:id')

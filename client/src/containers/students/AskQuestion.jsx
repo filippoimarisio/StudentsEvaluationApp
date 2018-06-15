@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import './AskQuestion.css'
 // import {fetchStudent} from '../../actions/actions.students'
 
 
@@ -32,7 +33,7 @@ class AskQuestion extends React.PureComponent {
                 Ask a question to:
                 <div className='studentBio'>
                     <h1>{randomStudent.firstName} {randomStudent.lastName}</h1>
-                    <img src={`${randomStudent.photo}`}/>
+                    <img className='askquestionpic' src={`${randomStudent.photo}`}/>
                     <div>Last Evaluation: {randomStudent.lastEvaluation}</div>
                 </div>
             </div>

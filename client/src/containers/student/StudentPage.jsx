@@ -25,10 +25,11 @@ class StudentPage extends React.PureComponent {
 
     storeEvaluation = (evaluation) => {
         const student = this.props.studentId
+        console.log(this.props.studentId, 'in the storeevaluation function')
         const grade = evaluation.grade
         const remark = evaluation.remark
-        const date = evaluation.date
-        this.props.storeEvaluation({student, grade, remark, date})
+        // const date = evaluation.date.toString()
+        this.props.storeEvaluation({student, grade, remark})
     }
 
 
