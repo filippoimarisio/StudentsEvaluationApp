@@ -1,7 +1,7 @@
 import * as request from "superagent";
 export const FETCH_ALL_BATCHES = 'FETCH_ALL_BATCHES'
 export const CREATE_BATCH = 'CREATE_BATCH'
-
+export const DELETE_BATCH = 'DELETE_BATCH'
 
 
 const baseUrl = "http://localhost:4000";
@@ -20,9 +20,6 @@ export const fetchAllBatches = () => dispatch => {
       .catch(err => alert(err));
   };
 
- 
-
-
   export const createBatch = batch => (dispatch, getState) => {
     const state = getState();
 
@@ -36,3 +33,13 @@ export const fetchAllBatches = () => dispatch => {
       })
     );
   };
+
+  export const deleteBatch = (batchId) => (dispatch) => {
+    request
+      .delete(`${baseUrl}/batches/${batchId}`)
+      .then(response => dispatch({
+        type: DELETE_BATCH,
+        payload: batchId
+      })
+    );
+};

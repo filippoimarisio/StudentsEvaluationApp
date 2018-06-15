@@ -50,15 +50,10 @@ class StudentsListContainer extends React.PureComponent {
 
     const { students } = this.props
     
-    function compare(a,b)
-    {
-         if (a.lastEvaluation < b.lastEvaluation) {
-               return -1;
-         } else   if (a.lastEvaluation > b.lastEvaluation)  {
-               return 1; 
-         } else {
-               return 0;
-          }
+    function compare(a,b) {
+         if (a.lastEvaluation < b.lastEvaluation) return -1;
+         else if (a.lastEvaluation > b.lastEvaluation) return 1; 
+         else return 0;
     } 
 
     students.sort(compare);
@@ -88,7 +83,7 @@ class StudentsListContainer extends React.PureComponent {
             })}
           </tr>
         </tbody>
-      </table>
+      </table> 
     </div>
       
     

@@ -2,8 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import {selectBatch} from '../../actions/actions.batch'
-import {fetchAllBatches, createBatch} from '../../actions/actions.batches'
+import {fetchAllBatches, createBatch, deleteBatch} from '../../actions/actions.batches'
 import CreateBatchForm from './CreateBatchForm'
+import Button from '@material-ui/core/Button';
 import './BatchesListContainer.css'
 
 class BatchesListContainer extends React.PureComponent {
@@ -19,6 +20,10 @@ class BatchesListContainer extends React.PureComponent {
   createBatch = batch => {
     this.props.createBatch(batch);
   };
+
+  deleteBatch(batchId) {
+    this.props.deleteBatch(batchId);
+  }
 
 
   render() {
@@ -40,6 +45,7 @@ class BatchesListContainer extends React.PureComponent {
           <div>Start date: { batch.startDate }</div>
           <div>End date: { batch.endDate }</div>
         </Link>
+        <Button className="deleteButton" onClick={() => this.deleteBatch(batch.id)}>Delete</Button>
         </div>
       )}
     </ul>
@@ -58,4 +64,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchAllBatches, selectBatch, createBatch})(BatchesListContainer)
+export default connect(mapStateToProps, {fetchAllBatches, selectBatch, createBatch, deleteBatch})(BatchesListContainer)

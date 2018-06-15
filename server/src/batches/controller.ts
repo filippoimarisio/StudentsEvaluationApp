@@ -1,4 +1,4 @@
-import {Get, JsonController, Param, Post, HttpCode, Body} from 'routing-controllers'
+import {Get, JsonController, Param, Post, HttpCode, Body, Delete, NotFoundError} from 'routing-controllers'
 import Batch from './entity'
 
 
@@ -24,5 +24,17 @@ export default class BatchController {
         @Body() batch : Batch
     ) {
         return batch.save()
+    }
+
+    @Delete('/batches/:id')
+    async deleteBatch(
+        @Param('id') id: number
+    ) {
+      const batch = await Batch.findOne(id)
+  
+      if (!batch) throw new NotFoundError('This batch doesnt exist!')
+      if (batch) batch.remove()
+      
+      return 'Student Deleted.'
     }
 }
