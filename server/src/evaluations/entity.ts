@@ -22,7 +22,7 @@ export default class Evaluation extends BaseEntity {
     @Column('text', {nullable: true})
     remark: string
 
-    @ManyToOne(_=>Student, student => student.id, { cascade: true })
+    @ManyToOne(_=>Student, student => student.id, { onDelete: 'CASCADE' })
     student: Student
 
     @IsOptional()
