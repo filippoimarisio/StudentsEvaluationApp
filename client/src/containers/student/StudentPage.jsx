@@ -5,6 +5,9 @@ import CreateEvaluationForm from './EvaluationForm'
 import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
 import Moment from 'react-moment'
 import Paper from "@material-ui/core/Paper";
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
+
 import './StudentPage.css'
 
 
@@ -74,6 +77,9 @@ class StudentPage extends React.PureComponent {
                 </div>
                 <div className='evaluationForm'>
                 <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
+                </div>
+                <div className='saveandnext'>
+                    <Button ><Link to={`/batches/${student.id}`} >Save and next</Link></Button>
                 </div>
             </div>
         )
