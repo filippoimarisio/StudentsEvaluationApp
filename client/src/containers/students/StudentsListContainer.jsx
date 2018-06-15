@@ -113,7 +113,7 @@ class StudentsListContainer extends React.PureComponent {
 
 
 const mapStateToProps = (state) => {
-  console.log('in the maspstatetoprops', state.students.studentsByBatch)
+  console.log(state.batchId,'in the maspstatetoprops', state.students.studentsByBatch)
 
     return {
     batchId: state.batchId,

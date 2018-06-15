@@ -11,7 +11,7 @@ export default class StudentController {
         const students = await Student.find()
         return { students }
     }  
-
+ 
     @Get('/students/:id')
     getStudent(
         @Param('id') id: number
@@ -36,7 +36,10 @@ export default class StudentController {
         const batch = (await Batch.findOne(student.batch))!
         student.batch = batch
 
-        return student.save()
+        await student.save()
+        await Batch.findOne(student.batch)
+        const studentsByBatch = await Student.find({ where : {batch} })
+        return {studentsByBatch}
     }
 
     @Put('/students/:id')
@@ -57,12 +60,15 @@ export default class StudentController {
         @Param('id') id: number
     ) {
       const student = await Student.findOne(id)
+      const batch = student
+
   
       if (!student) throw new NotFoundError('This student is not registered!')
       if (student) student.remove()
       
-      return 'Student Deleted.'
-    }
+      await Batch.findOne(student.batch)
+      const studentsByBatch = await Student.find({ where : {batch} })
+      return {studentsByBatch}    }
 
     // ALGORITHM
 

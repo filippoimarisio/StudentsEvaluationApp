@@ -35,6 +35,7 @@ const baseUrl = "http://localhost:4000";
       };
 
   export const deleteStudent = (studentId) => (dispatch) => {
+    
     request
       .delete(`${baseUrl}/students/${studentId}`)
       .then(response => dispatch({
