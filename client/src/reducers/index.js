@@ -8,7 +8,7 @@ import users from './users'
 import login from './login'
 import currentUser from './currentUser'
 import signup from './signup'
-import createbatch from './reducer.createbatch'
+// import createbatch from './reducer.createbatch'
 
 
 export default {
@@ -22,5 +22,5 @@ export default {
     login,
     currentUser,
     signup,
-    createbatch
+    // createbatch
 }

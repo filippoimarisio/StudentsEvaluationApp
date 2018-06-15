@@ -9,7 +9,7 @@ import './BatchesListContainer.css'
 
 class BatchesListContainer extends React.PureComponent {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchAllBatches();
   }
 
@@ -29,7 +29,6 @@ class BatchesListContainer extends React.PureComponent {
   render() {
 
     if(!this.props.batches) {
-      console.log(this.props.batches)
     this.componentWillMount()
         return  <div>Loading...</div>
     }
@@ -57,10 +56,9 @@ class BatchesListContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state,'inside batches MSTP')
+  console.log(state,'inside batches MSTP',)
   return {
-    batches: state.batches,
-    
+    batches: state.batches
   }
 }
 

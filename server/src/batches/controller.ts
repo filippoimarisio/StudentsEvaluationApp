@@ -24,6 +24,9 @@ export default class BatchController {
         @Body() batch : Batch
     ) {
         await batch.save()
+        const batches = await Batch.find()
+        console.log({batches})
+        return {batches}
     }
 
     @Delete('/batches/:id')
@@ -33,8 +36,10 @@ export default class BatchController {
       const batch = await Batch.findOne(id)
   
       if (!batch) throw new NotFoundError('This batch doesnt exist!')
-      if (batch) batch.remove()
+      if (batch) await batch.remove()
       
-      return 'Student Deleted.'
+        const batches = await Batch.find()
+        console.log({batches})
+        return {batches}
     }
 }

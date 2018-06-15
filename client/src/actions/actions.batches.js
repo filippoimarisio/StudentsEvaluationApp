@@ -20,8 +20,7 @@ export const fetchAllBatches = () => dispatch => {
       .catch(err => alert(err));
   };
 
-  export const createBatch = batch => (dispatch, getState) => {
-    const state = getState();
+  export const createBatch = batch => (dispatch) => {
 
   request
     .post(`${baseUrl}/batches`)
@@ -29,7 +28,7 @@ export const fetchAllBatches = () => dispatch => {
     .then(response =>
       dispatch({
         type: CREATE_BATCH,
-        payload: response.body, state
+        payload: response.body
       })
     );
   };
@@ -39,7 +38,7 @@ export const fetchAllBatches = () => dispatch => {
       .delete(`${baseUrl}/batches/${batchId}`)
       .then(response => dispatch({
         type: DELETE_BATCH,
-        payload: batchId
+        payload: response.body
       })
     );
 };
