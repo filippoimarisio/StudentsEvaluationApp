@@ -1,9 +1,9 @@
 .createStudentForm {
-    position: absolute;
-    margin-left: 350px;
-    margin-left: 350px;
-    margin-top: 400px;
+    position: relative;
+    margin-left: 450px;
+    margin-right: 450px;
+    margin-top: 450px;
     margin-bottom: 200px;
     padding: 10px;
-    background-color: peachpuff
+    background-color: lavender
 }

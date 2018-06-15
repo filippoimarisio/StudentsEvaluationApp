@@ -7,7 +7,6 @@ import Moment from 'react-moment'
 import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-
 import './StudentPage.css'
 
 
@@ -73,7 +72,7 @@ class StudentPage extends React.PureComponent {
                 <div className='studentBio'>
                     
                     <h2>{student.firstName} {student.lastName}</h2>
-                    <img src={student.photo} />
+                    <img className='studentpagepic' src={student.photo} />
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <div className='evaluationForm'>

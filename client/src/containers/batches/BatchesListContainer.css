@@ -1,7 +1,7 @@
 .batchContainer {
     margin-left: auto;
     margin-right: auto;
-    width: 75%;
+    width: 90%;
 }
 
 .batchElement {
@@ -9,9 +9,9 @@
     margin: 20px
 }
 
-.createBatch {
+/* .createBatch {
     position: relative;
     align-content: center;
     align-items: center
-}
+} */
 
