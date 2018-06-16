@@ -60,15 +60,12 @@ export default class StudentController {
         @Param('id') id: number
     ) {
       const student = await Student.findOne(id)
-      const batch = student
-
   
       if (!student) throw new NotFoundError('This student is not registered!')
       if (student) student.remove()
       
-      await Batch.findOne(student.batch)
-      const studentsByBatch = await Student.find({ where : {batch} })
-      return {studentsByBatch}    }
+      return 'Student Deleted.'
+    }
 
     // ALGORITHM
 

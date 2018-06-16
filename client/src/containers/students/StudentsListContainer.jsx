@@ -27,8 +27,8 @@ class StudentsListContainer extends React.PureComponent {
 
   };
 
-  deleteStudent(studentId) {
-    this.props.deleteStudent(studentId);
+  deleteStudent(studentId, batchId) {
+    this.props.deleteStudent(studentId, batchId);
   }
 
   selectStudent(studentId) {
