@@ -6,11 +6,16 @@ table {
 
 .evaluationForm {
     margin-top: 30px;
-    margin-bottom: 1000px
+    margin-bottom: 10px
 }
 
 td, th {
     width: 50px;
     margin-right: 20px;
     margin-left: 20px
+}
+
+.studentpagepic {
+    height: 300px;
+    width: 200px;
 }

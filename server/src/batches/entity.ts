@@ -17,7 +17,7 @@ export default class Batch extends BaseEntity {
   @Column('date', {nullable:true})
   endDate: Date
 
-  @OneToMany(_=> Student, student => student.batch)
+  @OneToMany(_=> Student, student => student.batch, {eager:true})
   students: Student[];
 }
 

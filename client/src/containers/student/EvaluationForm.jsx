@@ -17,11 +17,13 @@ export default class CreateEvaluationForm extends React.PureComponent {
       this.props.storeEvaluation({
         grade: this.state.grade,
         remark: this.state.remark,
+        date: this.state.date
       })
       
       this.props.addEvaluation({
         grade: this.state.grade,
         remark: this.state.remark,
+        date: this.state.date
 
       });
   }
@@ -45,6 +47,10 @@ export default class CreateEvaluationForm extends React.PureComponent {
         <label>
           Remark:
           <input type="text" name="remark" onChange={this.handleChange} />
+        </label>
+        <label>
+          Date:
+          <input type="text" name="date" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

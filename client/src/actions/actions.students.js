@@ -34,9 +34,12 @@ const baseUrl = "http://localhost:4000";
         );
       };
 
-  export const deleteStudent = (studentId) => (dispatch) => {
+  export const deleteStudent = (studentId, batchId) => (dispatch, getState) => {
+    const state = getState();
+    console.log(batchId,'in the deletestident function', studentId)
     request
       .delete(`${baseUrl}/students/${studentId}`)
+      .send(batchId)
       .then(response => dispatch({
         type: DELETE_STUDENT,
         payload: studentId

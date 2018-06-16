@@ -4,7 +4,8 @@ table {
     border-spacing: 5px;
     padding: 15px;
     margin-left:200px;
-    margin-right:200px
+    margin-right:200px;
+    margin-bottom: 20px;
 }
 
 .greenTable {
@@ -33,16 +34,27 @@ table {
 
 .studentElement {
     float: left;
-    margin: 20px
+    margin: 20px;
+    
 }
 
 .studentsListContainer {
     margin-left: auto;
     margin-right: auto;
-    width: 75%
+    width: 90%
 }
 
 .askQuestion {
     margin-top: 20px;
     margin-bottom: 40px
+}
+
+img {
+    width: 60px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10%
 }
