@@ -7,7 +7,6 @@ import CreateBatchForm from './CreateBatchForm'
 import Button from '@material-ui/core/Button';
 import './BatchesListContainer.css'
 
-
 class BatchesListContainer extends React.PureComponent {
 
   componentDidMount() {

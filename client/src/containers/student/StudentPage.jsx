@@ -24,7 +24,6 @@ class StudentPage extends React.PureComponent {
 
     storeEvaluation = (evaluation) => {
         const student = this.props.studentId
-        console.log(this.props.studentId, 'in the storeevaluation function')
         const grade = evaluation.grade
         const remark = evaluation.remark
         this.props.storeEvaluation({student, grade, remark})
@@ -38,7 +37,6 @@ class StudentPage extends React.PureComponent {
           } 
       
         const { student } = this.props
-        console.log({student})
 
         return (
             <div>
