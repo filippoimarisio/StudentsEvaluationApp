@@ -4,7 +4,6 @@ import {fetchStudent} from '../../actions/actions.students'
 import CreateEvaluationForm from './EvaluationForm'
 import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
 import Moment from 'react-moment'
-import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 import './StudentPage.css'
@@ -72,7 +71,7 @@ class StudentPage extends React.PureComponent {
                 <div className='studentBio'>
                     
                     <h2>{student.firstName} {student.lastName}</h2>
-                    <img className='studentpagepic' src={student.photo} />
+                    <img className='studentpagepic' src={student.photo} alt='student'/>
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <div className='evaluationForm'>

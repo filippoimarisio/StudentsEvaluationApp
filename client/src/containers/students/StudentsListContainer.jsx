@@ -64,17 +64,17 @@ class StudentsListContainer extends React.PureComponent {
         <tbody>
           <tr>
             {students.map(student => {
-            if (student.lastEvaluation == 'green')
+            if (student.lastEvaluation === 'green')
             return (
               <td key={student.id} className='greenTable'>
               </td>
             )
-            if (student.lastEvaluation == 'yellow')
+            if (student.lastEvaluation === 'yellow')
             return (
               <td key={student.id} className='yellowTable'>
               </td>
             )
-            if (student.lastEvaluation == 'red')
+            if (student.lastEvaluation === 'red')
             return (
               <td key={student.id} className='redTable'>
               </td>
@@ -95,7 +95,7 @@ class StudentsListContainer extends React.PureComponent {
       { students.map(student =>
         <div className='studentElement' key={student.id} >
           <Link to={`/students/${student.id}`} onClick={() => this.selectStudent(student.id)}>
-            <img src={ student.photo }/>
+            <img src={ student.photo } alt='student'/>
             <div>{ student.firstName } { student.lastName }</div>
             <div>Last Evaluation: { student.lastEvaluation }</div>
           </Link>

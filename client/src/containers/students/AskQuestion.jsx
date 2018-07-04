@@ -16,7 +16,7 @@ class AskQuestion extends React.PureComponent {
                 Ask a question to:
                 <div className='studentBio'>
                     <h1>{randomStudent.firstName} {randomStudent.lastName}</h1>
-                    <img className='askquestionpic' src={`${randomStudent.photo}`}/>
+                    <img className='askquestionpic' alt='student' src={`${randomStudent.photo}`}/>
                     <div>Last Evaluation: {randomStudent.lastEvaluation}</div>
                 </div>
             </div>
