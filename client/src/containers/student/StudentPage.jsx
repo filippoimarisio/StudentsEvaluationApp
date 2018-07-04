@@ -4,7 +4,6 @@ import {fetchStudent} from '../../actions/actions.students'
 import CreateEvaluationForm from './EvaluationForm'
 import {addEvaluation, storeEvaluation} from '../../actions/actions.students'
 import Moment from 'react-moment'
-import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 import './StudentPage.css'
@@ -14,7 +13,7 @@ import './StudentPage.css'
 class StudentPage extends React.PureComponent {
 
     componentWillMount() {
-        this.props.fetchStudent(this.props.studentId);
+        this.props.fetchStudent(this.props.match.params.id);
     }
 
     addEvaluation = (evaluation) => {
@@ -25,10 +24,8 @@ class StudentPage extends React.PureComponent {
 
     storeEvaluation = (evaluation) => {
         const student = this.props.studentId
-        console.log(this.props.studentId, 'in the storeevaluation function')
         const grade = evaluation.grade
         const remark = evaluation.remark
-        // const date = evaluation.date.toString()
         this.props.storeEvaluation({student, grade, remark})
     }
 
@@ -40,7 +37,6 @@ class StudentPage extends React.PureComponent {
           } 
       
         const { student } = this.props
-        console.log({student})
 
         return (
             <div>
@@ -61,9 +57,9 @@ class StudentPage extends React.PureComponent {
                     <tbody>
                         {student.evaluation.map(score => (
                             <tr key={score.id} >
-                                <Moment format="YYYY/MM/DD">
-                                <td>{score.date}</td>
-                                </Moment>
+                                
+                                <td><Moment format="YYYY/MM/DD">{score.date}</Moment></td>
+                                
                                 <td>{score.grade}</td>
                                 <td>{score.remark}</td>
                             </tr>
@@ -73,7 +69,7 @@ class StudentPage extends React.PureComponent {
                 <div className='studentBio'>
                     
                     <h2>{student.firstName} {student.lastName}</h2>
-                    <img className='studentpagepic' src={student.photo} />
+                    <img className='studentpagepic' src={student.photo} alt='student'/>
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <div className='evaluationForm'>

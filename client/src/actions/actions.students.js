@@ -7,13 +7,13 @@ export const ADD_EVALUATION = 'ADD_EVALUATION'
 export const RANDOM_STUDENT = 'RANDOM_STUDENT'
 export const STORE_EVALUATION = 'STORE_EVALUATION'
 
-
+ 
 const baseUrl = "http://localhost:4000";
 
 
  export const fetchBatchStudents = (batchId) => (dispatch) => {
     request
-    .get(`${baseUrl}/students/batch/${batchId.batchId}`)
+    .get(`${baseUrl}/students/batch/${batchId}`)
     .then(response => dispatch({
       type: FETCH_BATCH_STUDENTS,
       payload: response.body
@@ -21,8 +21,7 @@ const baseUrl = "http://localhost:4000";
     .catch(err => alert(err))
     }
 
-    export const addAStudent = student => (dispatch, getState) => {
-      const state = getState();
+    export const addAStudent = student => (dispatch) => {
       request
         .post(`${baseUrl}/students`)
         .send(student)
@@ -34,9 +33,7 @@ const baseUrl = "http://localhost:4000";
         );
       };
 
-  export const deleteStudent = (studentId, batchId) => (dispatch, getState) => {
-    const state = getState();
-    console.log(batchId,'in the deletestident function', studentId)
+  export const deleteStudent = (studentId, batchId) => (dispatch) => {
     request
       .delete(`${baseUrl}/students/${studentId}`)
       .send(batchId)
@@ -84,7 +81,6 @@ export const fetchStudent = (studentId) => (dispatch) => {
 
 
   export const storeEvaluation = evaluation => (dispatch) => {
-    console.log('in the storeevaluation actioncontrol', evaluation)
       request
         .post(`${baseUrl}/evaluations`)
         .send(evaluation)
