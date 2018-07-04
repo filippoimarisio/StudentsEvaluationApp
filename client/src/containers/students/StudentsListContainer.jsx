@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {fetchBatchStudents, randomStudent} from '../../actions/actions.students'
 import AddAStudent from './CreateStudentForm'
 import {addAStudent} from '../../actions/actions.students'
@@ -14,17 +14,13 @@ class StudentsListContainer extends React.PureComponent {
 
 
   componentWillMount() {
-    this.props.fetchBatchStudents(this.props.batchId);
-    console.log(this.props.batchId)
+    this.props.fetchBatchStudents(this.props.match.params.id);
   }
 
   addAStudent = (student) => {
     const { batchId } = this.props.batchId
-
     student = {...student, batch : batchId}
     this.props.addAStudent(student);
-    console.log('in the addastudent function', batchId, student)
-
   };
 
   deleteStudent(studentId, batchId) {
@@ -38,12 +34,15 @@ class StudentsListContainer extends React.PureComponent {
   randomStudent(batchId) {
     this.props.randomStudent(batchId);
   }
- 
+   
 
   render() {
 
+    if (!this.props.batchId) {
+      return <Redirect to="/batches" />
+    }
+
     if(!this.props.students) {
-      console.log(this.props.students)
     this.componentWillMount()
         return  <div>Loading...</div>
     } 
@@ -51,9 +50,9 @@ class StudentsListContainer extends React.PureComponent {
     const { students } = this.props
     
     function compare(a,b) {
-         if (a.lastEvaluation < b.lastEvaluation) return -1;
-         else if (a.lastEvaluation > b.lastEvaluation) return 1; 
-         else return 0;
+      if (a.lastEvaluation < b.lastEvaluation) return -1;
+      else if (a.lastEvaluation > b.lastEvaluation) return 1; 
+      else return 0;
     } 
 
     students.sort(compare);
@@ -113,7 +112,6 @@ class StudentsListContainer extends React.PureComponent {
 
 
 const mapStateToProps = (state) => {
-  console.log(state.batchId,'in the maspstatetoprops', state.students.studentsByBatch)
 
     return {
     batchId: state.batchId,

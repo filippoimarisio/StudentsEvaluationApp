@@ -14,7 +14,7 @@ import './StudentPage.css'
 class StudentPage extends React.PureComponent {
 
     componentWillMount() {
-        this.props.fetchStudent(this.props.studentId);
+        this.props.fetchStudent(this.props.match.params.id);
     }
 
     addEvaluation = (evaluation) => {
@@ -28,7 +28,6 @@ class StudentPage extends React.PureComponent {
         console.log(this.props.studentId, 'in the storeevaluation function')
         const grade = evaluation.grade
         const remark = evaluation.remark
-        // const date = evaluation.date.toString()
         this.props.storeEvaluation({student, grade, remark})
     }
 
@@ -61,9 +60,9 @@ class StudentPage extends React.PureComponent {
                     <tbody>
                         {student.evaluation.map(score => (
                             <tr key={score.id} >
-                                <Moment format="YYYY/MM/DD">
-                                <td>{score.date}</td>
-                                </Moment>
+                                
+                                <td><Moment format="YYYY/MM/DD">{score.date}</Moment></td>
+                                
                                 <td>{score.grade}</td>
                                 <td>{score.remark}</td>
                             </tr>

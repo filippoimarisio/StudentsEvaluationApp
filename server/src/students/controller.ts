@@ -27,7 +27,7 @@ export default class StudentController {
         return {studentsByBatch, batch}
     }
 
-
+ 
     @Post('/students')
     @HttpCode(201)
     async createStudent(

@@ -9,7 +9,6 @@ try {
   }
 }
 catch (e) {
-  console.log(`Error retrieving data from local storage`, e)
 }
 
 export default function (state = initialState, {type, payload}) {

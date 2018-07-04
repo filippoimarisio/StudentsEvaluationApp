@@ -7,7 +7,6 @@ export default function(state = [], action ) {
             return action.payload
 
         case CREATE_BATCH:
-        console.log('inside the create batch reducer', state)
             return action.payload.batches
         
         case DELETE_BATCH:

@@ -7,13 +7,13 @@ export const ADD_EVALUATION = 'ADD_EVALUATION'
 export const RANDOM_STUDENT = 'RANDOM_STUDENT'
 export const STORE_EVALUATION = 'STORE_EVALUATION'
 
-
+ 
 const baseUrl = "http://localhost:4000";
 
 
  export const fetchBatchStudents = (batchId) => (dispatch) => {
     request
-    .get(`${baseUrl}/students/batch/${batchId.batchId}`)
+    .get(`${baseUrl}/students/batch/${batchId}`)
     .then(response => dispatch({
       type: FETCH_BATCH_STUDENTS,
       payload: response.body
