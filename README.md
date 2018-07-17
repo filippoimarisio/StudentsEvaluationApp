@@ -8,8 +8,8 @@ The app is built using React/Redux, NodeJS/Typescript and PostgreSQL.
 Key Features:
 
 - Authentication with JWT token
-- Select, Create and Delete functionalities
-- React components render autonomously
+- RESTful APIs
+- React with Redux
 - Functional algorithm
 
 Created for Codaisseur Academy - Class 17 - Final Assignment
