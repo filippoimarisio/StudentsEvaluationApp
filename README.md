@@ -12,4 +12,15 @@ Key Features:
 - React with Redux
 - Functional algorithm
 
+# Quickstart
+
+Database is set up in postgres
+
+Clone the project <br>
+Install dependencies on both client & server folders using yarn  <br>
+Run yarn tsc -w in the server folder <br>
+Run "nodemon ." in the server folder  <br>
+Run "yarn start" in the client folder  <br>
+
+
 Created for Codaisseur Academy - Class 17 - Final Assignment
