@@ -5,6 +5,13 @@ import {selectBatch} from '../../actions/actions.batch'
 import {fetchAllBatches, createBatch, deleteBatch} from '../../actions/actions.batches'
 import CreateBatchForm from './CreateBatchForm'
 import Button from '@material-ui/core/Button';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography
+} from '@material-ui/core'
 import './BatchesListContainer.css'
 
 class BatchesListContainer extends React.PureComponent {
@@ -39,14 +46,23 @@ class BatchesListContainer extends React.PureComponent {
         <h1>Batches</h1>
         <ul>
           { batches.map(batch =>
-          <div key={batch.id} className='batchElement'>
-            <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
-              <div>Batch # { batch.batchNumber }</div>
-              <div>Start date: { batch.startDate }</div>
-              <div>End date: { batch.endDate }</div>
-            </Link>
-            <Button className="deleteButton" onClick={() => this.deleteBatch(batch.id)}>Delete</Button>
-          </div>
+          <Card key={batch.id} className='batchElement'>
+            <CardContent 
+              style={{
+              padding: 0,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+              gridAutoRows: 'minMax(50px, auto)',
+              minWidth: '50%'
+            }}>
+              <Typography variant="headline" component="h5" align="center">
+                <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
+                  <div>Batch # { batch.batchNumber }</div>
+                </Link>
+              </Typography>
+              <Button className="deleteButton" onClick={() => this.deleteBatch(batch.id)}>Delete</Button>
+            </CardContent>
+          </Card>
           )}
         </ul>
         <div className='createBatch'>
