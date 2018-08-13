@@ -15,14 +15,16 @@ export default class StudentController {
     @Get('/students/:id')
     getStudent(
         @Param('id') id: number
-    ) {
+    ) 
+    {
         return Student.findOne(id)
     } 
 
     @Get('/students/batch/:batch')
     async getStudentsByBatch(
         @Param('batch') batch: number 
-    ) {
+    ) 
+    {
         const studentsByBatch =  await Student.find({ where : {batch} })
         return {studentsByBatch, batch}
     }
@@ -32,7 +34,8 @@ export default class StudentController {
     @HttpCode(201)
     async createStudent(
         @Body() student : Student
-    ) {
+    ) 
+    {
         const batch = (await Batch.findOne(student.batch))!
         student.batch = batch
 
@@ -44,11 +47,10 @@ export default class StudentController {
 
     @Put('/students/:id')
     async updateStudent(
-    @Param('id') id: number,
+        @Param('id') id: number,
         @Body() update: Partial<Student>
-    ) {
-        console.log('in the put endpoint')
-
+    ) 
+    {
         const student = await Student.findOne(id)
         if (!student) throw new NotFoundError('Cannot find page')
 
@@ -58,13 +60,14 @@ export default class StudentController {
     @Delete('/students/:id')
     async deleteStudent(
         @Param('id') id: number
-    ) {
-      const student = await Student.findOne(id)
-  
-      if (!student) throw new NotFoundError('This student is not registered!')
-      if (student) student.remove()
-      
-      return 'Student Deleted.'
+    ) 
+    {
+        const student = await Student.findOne(id)
+    
+        if (!student) throw new NotFoundError('This student is not registered!')
+        if (student) student.remove()
+        
+        return 'Student Deleted.'
     }
 
     // ALGORITHM
@@ -101,32 +104,26 @@ export default class StudentController {
         if (randomNumber <= 45) chosenColor = 'red'
         else if (randomNumber <= 80) chosenColor = 'yellow'
         else chosenColor = 'green'
-        console.log(chosenColor)
 
         //4
 
         const filteredStudents = studentsByBatch.filter(student => {
              return student.lastEvaluation == chosenColor
         })
-        console.log(filteredStudents)
 
         //5
 
         if (filteredStudents.length == 0) {
-            console.log("no students with yellow") 
             return this.randomStudent(batch)
         }
         
         //6
 
         const randomNum = Math.floor(Math.random() * filteredStudents.length)
-        console.log(filteredStudents.length)
-        console.log(randomNum)
 
         //7
 
         const chosenStudent = filteredStudents[randomNum]
-        console.log(chosenStudent)
 
         //8
 

@@ -24,24 +24,23 @@ export default class EvaluationController {
     @HttpCode(201)
     async createEvaluation(
         @Body() evaluation : Evaluation
-    ) {
+    )
+    {
         const student = (await Student.findOne(evaluation.student))!
         evaluation.student = student
-        console.log(evaluation,'in the post evaluation controller', student)
         const user = (await User.findOne(evaluation.user))!
         evaluation.user = user
-
         return evaluation.save()
     }
 
     @Put('/evaluations/:id')
     async updateEvaluation(
-    @Param('id') id: number,
+        @Param('id') id: number,
         @Body() update: Partial<Evaluation>
-    ) {
+    ) 
+    {
         const evaluation = await Evaluation.findOne(id)
         if (!evaluation) throw new NotFoundError('Cannot find page')
-
         return Evaluation.merge(evaluation, update).save()
     }
 }

@@ -25,7 +25,6 @@ export default class BatchController {
     ) {
         await batch.save()
         const batches = await Batch.find()
-        console.log({batches})
         return {batches}
     }
 
@@ -33,13 +32,12 @@ export default class BatchController {
     async deleteBatch(
         @Param('id') id: number
     ) {
-      const batch = await Batch.findOne(id)
+        const batch = await Batch.findOne(id)
   
-      if (!batch) throw new NotFoundError('This batch doesnt exist!')
-      if (batch) await batch.remove()
+        if (!batch) throw new NotFoundError('This batch doesnt exist!')
+        if (batch) await batch.remove()
       
         const batches = await Batch.find()
-        console.log({batches})
         return {batches}
     }
 }

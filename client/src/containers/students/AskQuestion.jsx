@@ -27,8 +27,8 @@ class AskQuestion extends React.PureComponent {
 const mapStateToProps = (state) => {
 
     return {
-      randomStudent: state.randomstudent.chosenStudent
+        randomStudent: state.randomstudent.chosenStudent
     }
-  }
+}
   
 export default connect(mapStateToProps)(AskQuestion)
