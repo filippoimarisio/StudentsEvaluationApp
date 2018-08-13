@@ -7,7 +7,8 @@ export default class UserController {
   @Post('/users')
   async signup(
     @Body() data: User
-  ) {
+  ) 
+  {
     const {password, ...rest} = data
     const entity = User.create(rest)
     await entity.setPassword(password)
@@ -21,7 +22,8 @@ export default class UserController {
   @Get('/users/:id([0-9]+)')
   getUser(
     @Param('id') id: number
-  ) {
+  ) 
+  {
     return User.findOne(id)
   }
 

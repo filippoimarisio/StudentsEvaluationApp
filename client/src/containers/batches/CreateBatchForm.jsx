@@ -16,43 +16,44 @@ export default class CreateBatchForm extends React.PureComponent {
   handleSubmit = (event) => {
     event.preventDefault()
 
-      this.props.createBatch({
-        batchNumber: this.state.batchNumber,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
-      })
+    this.props.createBatch({
+      batchNumber: this.state.batchNumber,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+    })
     
   }
 
   render() {
     return (
-    <div className='createBatchForm'>
-      <h2>Create a new Batch</h2>
+      <div className='createBatchForm'>
+        <h2>Create a new Batch</h2>
 
-      <form onSubmit={this.handleSubmit}>
-      
-      <div>
-        <label>
-          Batch Number:
-          <input type="text" name="batchNumber" onChange={this.handleChange} />
-        </label>
-        </div>
+        <form onSubmit={this.handleSubmit}>
+        
+          <div>
+            <label>
+              Batch Number:
+              <input type="text" name="batchNumber" onChange={this.handleChange} />
+            </label>
+          </div>
 
-        <div>
-        <label>
-          Start Date:
-          <input type="text" name="startDate" onChange={this.handleChange} />
-        </label>
-        </div>
+          <div>
+            <label>
+              Start Date:
+              <input type="text" name="startDate" onChange={this.handleChange} />
+            </label>
+          </div>
 
-        <div>
-        <label>
-          End Date:
-          <input type="text" name="endDate" onChange={this.handleChange} />
-        </label>
-        </div>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>)
+          <div>
+            <label>
+              End Date:
+              <input type="text" name="endDate" onChange={this.handleChange} />
+            </label>
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    )
   }
 }

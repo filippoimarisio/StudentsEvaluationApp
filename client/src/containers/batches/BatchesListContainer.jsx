@@ -29,34 +29,35 @@ class BatchesListContainer extends React.PureComponent {
   render() {
 
     if(!this.props.batches) {
-    this.componentWillMount()
+      this.componentWillMount()
         return  <div>Loading...</div>
     }
 
     const { batches } = this.props
-    return <div className='batchContainer'>
-    <h1>Batches</h1>
-    <ul>
-      { batches.map(batch =>
-      <div key={batch.id} className='batchElement'>
-        <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
-          <div>Batch # { batch.batchNumber }</div>
-          <div>Start date: { batch.startDate }</div>
-          <div>End date: { batch.endDate }</div>
-        </Link>
-        <Button className="deleteButton" onClick={() => this.deleteBatch(batch.id)}>Delete</Button>
+    return (
+      <div className='batchContainer'>
+        <h1>Batches</h1>
+        <ul>
+          { batches.map(batch =>
+          <div key={batch.id} className='batchElement'>
+            <Link to={`/batches/${batch.id}`}  onClick={() => this.selectBatch(batch.id)}>
+              <div>Batch # { batch.batchNumber }</div>
+              <div>Start date: { batch.startDate }</div>
+              <div>End date: { batch.endDate }</div>
+            </Link>
+            <Button className="deleteButton" onClick={() => this.deleteBatch(batch.id)}>Delete</Button>
+          </div>
+          )}
+        </ul>
+        <div className='createBatch'>
+          <CreateBatchForm createBatch={this.createBatch} />
         </div>
-      )}
-    </ul>
-    <div className='createBatch'>
-      <CreateBatchForm createBatch={this.createBatch} />
-    </div>
-  </div>
+      </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state,'inside batches MSTP',)
   return {
     batches: state.batches
   }

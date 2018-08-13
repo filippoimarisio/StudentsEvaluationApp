@@ -11,12 +11,12 @@ import LoginController from './logins/controller';
 const app = createKoaServer({
     cors: true,
     controllers: [
-     BatchController,
-     StudentController,
-     EvaluationController,
-     UserController,
-     LoginController
-   ]
+      BatchController,
+      StudentController,
+      EvaluationController,
+      UserController,
+      LoginController
+    ]
 })
 
 setupDb()

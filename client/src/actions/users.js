@@ -1,16 +1,12 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
 import {isExpired} from '../jwt'
-
 export const ADD_USER = 'ADD_USER'
 export const UPDATE_USER = 'UPDATE_USER'
 export const UPDATE_USERS = 'UPDATE_USERS'
-
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
-
 export const USER_LOGOUT = 'USER_LOGOUT'
-
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
 
@@ -18,7 +14,8 @@ export const logout = () => ({
   type: USER_LOGOUT
 })
 
-export const login = (email, password) => (dispatch) =>
+export const login = (email, password) => (dispatch) => {
+	
 	request
 		.post(`${baseUrl}/logins`)
     .send({email, password})
@@ -38,9 +35,10 @@ export const login = (email, password) => (dispatch) =>
     	else {
     		console.error(err)
     	}
-    })
-
-export const signup = (email, password) => (dispatch) =>
+		})
+}
+	
+export const signup = (email, password) => (dispatch) => {
 	request
 		.post(`${baseUrl}/users`)
 		.send({ firstName: email, lastName: email, email, password })
@@ -60,8 +58,10 @@ export const signup = (email, password) => (dispatch) =>
 				console.error(err)
 			}
 		})
+}
 
 export const getUsers = () => (dispatch, getState) => {
+	
   const state = getState()
   if (!state.currentUser) return null
   const jwt = state.currentUser.jwt

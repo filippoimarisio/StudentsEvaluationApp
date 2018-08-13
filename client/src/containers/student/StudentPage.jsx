@@ -32,9 +32,9 @@ class StudentPage extends React.PureComponent {
 
     render() {
         if(!this.props.student.evaluation) {
-        this.componentWillMount()
+            this.componentWillMount()
             return  <div>Loading...</div>
-          } 
+        } 
       
         const { student } = this.props
 
@@ -57,9 +57,7 @@ class StudentPage extends React.PureComponent {
                     <tbody>
                         {student.evaluation.map(score => (
                             <tr key={score.id} >
-                                
                                 <td><Moment format="YYYY/MM/DD">{score.date}</Moment></td>
-                                
                                 <td>{score.grade}</td>
                                 <td>{score.remark}</td>
                             </tr>
@@ -67,13 +65,12 @@ class StudentPage extends React.PureComponent {
                     </tbody>
                 </table>
                 <div className='studentBio'>
-                    
                     <h2>{student.firstName} {student.lastName}</h2>
                     <img className='studentpagepic' src={student.photo} alt='student'/>
                     <div>Last Evaluation: {student.lastEvaluation}</div>
                 </div>
                 <div className='evaluationForm'>
-                <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
+                    <CreateEvaluationForm addEvaluation={this.addEvaluation} storeEvaluation={this.storeEvaluation}/>         
                 </div>
                 <div className='saveandnext'>
                     <Button ><Link to={`/batches/${student.id}`} >Next</Link></Button>

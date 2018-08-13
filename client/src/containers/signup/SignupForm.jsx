@@ -1,11 +1,9 @@
 import React, {PureComponent} from 'react'
-// import './SignUpForm.css'
 
 export default class SignUpForm extends PureComponent {
 	state = {}
 
 	handleSubmit = (e) => {
-        console.log('in the hasuform')
 		e.preventDefault()
 		this.props.onSubmit(this.state)
 	}

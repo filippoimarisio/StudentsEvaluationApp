@@ -1,6 +1,5 @@
 import {FETCH_ALL_BATCHES, CREATE_BATCH, DELETE_BATCH} from '../actions/actions.batches'
 
-
 export default function(state = [], action ) {
     switch (action.type) {
         case FETCH_ALL_BATCHES:

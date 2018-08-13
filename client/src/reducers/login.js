@@ -8,6 +8,6 @@ export default function (state = {}, {type, payload}) {
 			}
 
 		default:
-      return state
+      		return state
 	}
 }
