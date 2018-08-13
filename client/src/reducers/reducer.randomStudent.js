@@ -1,12 +1,12 @@
 import {RANDOM_STUDENT} from '../actions/actions.students'
 
 export default function(state = {}, action ) {
-    switch (action.type) {
+  switch (action.type) {
 
-        case RANDOM_STUDENT:
-            return action.payload
+    case RANDOM_STUDENT:
+      return action.payload
 
-        default: 
-            return state
-    }  
+    default: 
+      return state
+  }  
 }

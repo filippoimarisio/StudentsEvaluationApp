@@ -4,17 +4,17 @@ import {DELETE_STUDENT} from '../actions/actions.students'
 
 
 export default function(state = {}, action ) {
-    switch (action.type) {
-        case FETCH_BATCH_STUDENTS:
-            return action.payload
+  switch (action.type) {
+    case FETCH_BATCH_STUDENTS:
+      return action.payload
 
-        case ADD_A_STUDENT:
-            return action.payload
+    case ADD_A_STUDENT:
+      return action.payload
 
-        case DELETE_STUDENT:
-            return state.studentsByBatch.filter(student => student.id !== action.payload)
+    case DELETE_STUDENT:
+      return state.studentsByBatch.filter(student => student.id !== action.payload)
 
-        default: 
-            return state
-    }  
+    default: 
+      return state
+  }  
 }
